@@ -22,8 +22,10 @@ import imageGram from '../images/imageGram.jpg'
 	
 		return (
 			<li className="thumb-filter" onClick={this.handleFilter}>
-				<img className={this.props.filter}  data-name={this.props.filter} src={imageGram} alt="thumb forest" />
-				<p>{this.props.filter}</p>
+				<div>
+				<img id={this.props.filter}  data-name={this.props.filter} src={imageGram} alt="thumb forest" />
+				<p className="title-filter-p" data-name={this.props.filter}>{this.props.filter}</p>
+				</div>
 			</li>
 		);
 	}
