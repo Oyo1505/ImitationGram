@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
-import classNames from 'classnames'
-import  Modal from 'react-bootstrap/lib/Modal';
+import classNames from 'classnames';
+import { Modal } from 'react-bootstrap';
 import Dropzone from 'react-dropzone'
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
  const getColor = (props) => {
@@ -25,7 +26,7 @@ const Container = styled.div`
 
 
 
-const imageMaxSize = 100000; //bytes
+const imageMaxSize = 1000000; //bytes
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
 const acceptedFileTypesArray = acceptedFileTypes.split(",").map(function(item) {return item.trim()});
 
@@ -57,13 +58,12 @@ export default class DragImage extends React.Component {
 
   				return true;
   			}
-  			
-
-  			
   		}
 
-  		handleOnDrop(files, rejectedFiles){
-  			
+
+
+  		handleOnDrop(files, rejectedFiles ){
+  				
   			if( rejectedFiles && rejectedFiles.length > 0){
   				this.verifyFile(rejectedFiles);
   			}
@@ -72,7 +72,7 @@ export default class DragImage extends React.Component {
   				const isVerified = this.verifyFile(files);
   				if(isVerified){
   					//imageBase64Data
-
+  					
   					const currentFile = files[0];
   					const myFilItemReader = new FileReader();
   					myFilItemReader.addEventListener('load', ()=>{
@@ -121,7 +121,7 @@ export default class DragImage extends React.Component {
 								              {...getRootProps()}
 								              className={classNames('dropzone', {'dropzone--isActive': isDragActive})}
 								            >
-								              <input {...getInputProps()} />
+								              <input {...getInputProps()}/>
 								              {
 								                <p>Drag your file here ! :)</p>
 								              }
@@ -135,4 +135,8 @@ export default class DragImage extends React.Component {
 			</>
 		);
 	}
+}
+
+DragImage.propTypes = {
+	end: PropTypes.bool,
 }

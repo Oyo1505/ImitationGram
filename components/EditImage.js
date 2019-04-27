@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames'
-import  Modal from 'react-bootstrap/lib/Modal';
+import Modal from 'react-bootstrap/Modal';
 import Dropzone from 'react-dropzone'
 import styled from 'styled-components';
 import FiltersItems from '../components/FiltersItems';
@@ -99,7 +100,10 @@ class EditImage extends React.Component {
 					max:10,
 					type:'px',
 				},	
-	    	]
+	    	],
+	    	mixBlendMode:[],
+	    	gradientSize:[], 
+	    	gradientPosition:[]
 	    };
   	};
   		toggle(){
@@ -156,7 +160,7 @@ class EditImage extends React.Component {
 						<div className="image-rendered">
 							<Photo photo={this.state.picture} filter={this.state.filter} styleFilters={this.state.styleFilters} />
 						</div>
-					<div id="filters-items">
+					<div id="filters-items" >
 						<FiltersItems action={this.onUpdateFilter} />
 					</div>
 					
@@ -174,3 +178,9 @@ class EditImage extends React.Component {
 	}
 }
 export default EditImage;
+
+EditImage.propTypes = {
+	picture: PropTypes.string,
+	filter: PropTypes.string,
+	styleFilters: PropTypes.object,
+}

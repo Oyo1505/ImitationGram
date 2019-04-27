@@ -1,5 +1,6 @@
 import React from 'react';
 import ItemsSliders from './ItemsSliders'
+import CssCode from './CssCode';
  class EditPanel extends React.Component {
 	
 
@@ -20,6 +21,8 @@ import ItemsSliders from './ItemsSliders'
 			<div>
 				<h5>Fitlers Control</h5>
 					<ItemsSliders handler={this.handler} styleFilters={styleFilters}  />
+				<h5>Css</h5>
+				 	<CssCode  styleFilters={styleFilters} />
 			</div>
 		);
 	}

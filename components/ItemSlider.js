@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
  class ItemSlider extends React.Component {
 
@@ -31,3 +33,7 @@ import React from 'react';
 }
 
 export default ItemSlider;
+
+ItemSlider.propTypes ={
+	value: PropTypes.number,
+}

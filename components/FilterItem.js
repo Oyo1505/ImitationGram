@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import imageGram from '../images/imageGram.jpg'
 
 
@@ -31,3 +32,7 @@ import imageGram from '../images/imageGram.jpg'
 	}
 }
 export default FilterItem;
+
+FilterItem.propTypes = {
+	inputField: PropTypes.string,
+}
