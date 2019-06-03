@@ -19,7 +19,7 @@ import CssCode from './CssCode';
 		
 		return (
 			<div>
-				<h5>Fitlers Control</h5>
+				<h5>Filters Control</h5>
 					<ItemsSliders handler={this.handler} styleFilters={styleFilters}  />
 				<h5>Css</h5>
 				 	<CssCode  styleFilters={styleFilters} />

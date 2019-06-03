@@ -93,7 +93,7 @@ export default class DragImage extends React.Component {
 
 	render() {
 		return (
-			<>
+			<Fragment>
 				<Modal show={this.props.end} onHide={this.toggle}
 							size="lg"  
 
@@ -132,7 +132,7 @@ export default class DragImage extends React.Component {
 								</Dropzone>
 								</Modal.Body>
 							</Modal>
-			</>
+			</Fragment>
 		);
 	}
 }
