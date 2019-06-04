@@ -8,21 +8,22 @@ import CssCode from './CssCode';
 		super(props);
 
 		this.handler = this.handler.bind(this);
+		this.state = {styles : []}
 	}
 
 	handler(val, id){
 		this.props.onUpdate(val, id);
 	}
-
+	
 	render() {
-		var styleFilters = this.props.styleFilters;
+		var {styleFilters, styles} = this.props;
 		
 		return (
 			<div>
 				<h5>Filters Control</h5>
 					<ItemsSliders handler={this.handler} styleFilters={styleFilters}  />
 				<h5>Css</h5>
-				 	<CssCode  styleFilters={styleFilters} />
+				 	<CssCode  styleFilters={styleFilters} styles={styles}/>
 			</div>
 		);
 	}

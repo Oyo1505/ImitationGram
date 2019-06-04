@@ -7,8 +7,6 @@ import CssFilter from './CssFilter';
 	}
 
 	render() {
-
-		console.log(this.props.styleFilters);
 		if(this.props.styleFilters){
 		var filters = this.props.styleFilters.map(function(filter){
 				return (<CssFilter filter={filter} key={`css-filter-panel-${filter.id}`} />)

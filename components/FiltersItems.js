@@ -15,19 +15,18 @@ class FiltersItems extends React.Component {
 	  }
 
 
-	handler(filter){
-		
-		this.props.action(filter);
+	handler(filter, styles){
+		this.props.action(filter, styles);
 		this.setState({
 			classFilter:filter
 		})
 	}
 	
 	render() {
-		
+		//console.log(filters)
 		let filtersItems;
 		filtersItems = filters.map(function(filter){
-			return (<FilterItem key={`id-${filter.id}-${filter.filter}`} action={this.handler}  filter={filter.filter}  />);
+			return (<FilterItem key={`id-${filter.id}-${filter.filter}`} action={this.handler}  filter={filter.filter} styles={filter.css} />);
 		}, this);
 
 		return (

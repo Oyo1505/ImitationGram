@@ -12,7 +12,7 @@ import Snapshot from '../components/Snapshot';
 import DragImage from '../components/DragImage';
 
 const Button = styled.button `
-	transition: 0.25s;
+    transition: 0.25s;
   background: none;
   border: 2px solid;
   font: inherit;
@@ -42,58 +42,59 @@ class EditImage extends React.Component {
         this.state = {
             picture: imageGram,
             filter: '',
+            stylesBefore: [],
             styleFilters: [{
                     id: 0,
-                    name: 'Contrast',
+                    name: 'contrast',
                     value: 100,
                     max: 200,
                     type: '%',
                 },
                 {
                     id: 1,
-                    name: 'Brightness',
+                    name: 'brightness',
                     value: 100,
                     max: 200,
                     type: '%',
                 },
                 {
                     id: 2,
-                    name: 'Saturate',
+                    name: 'saturate',
                     value: 100,
                     max: 200,
                     type: '%',
                 },
                 {
                     id: 3,
-                    name: 'Sepia',
+                    name: 'sepia',
                     value: 0,
                     max: 100,
                     type: '%',
                 },
                 {
                     id: 4,
-                    name: 'Grayscale',
+                    name: 'grayscale',
                     value: 0,
                     max: 100,
                     type: '%',
                 },
                 {
                     id: 5,
-                    name: 'Invert',
+                    name: 'invert',
                     value: 0,
                     max: 100,
                     type: '%',
                 },
                 {
                     id: 6,
-                    name: 'Hue-rotate',
+                    name: 'hue-rotate',
                     value: 0,
                     max: 360,
                     type: 'deg',
                 },
                 {
                     id: 7,
-                    name: 'Blur',
+                    name: 'blur',
                     value: 0,
                     max: 10,
                     type: 'px',
@@ -109,11 +110,21 @@ class EditImage extends React.Component {
         this.setState({ end: !this.state.end });
     };
 
-    onUpdateFilter(val) {
+    onUpdateFilter(val, styles) {
+     console.log(styles.before)
+        let styleFiltersClone = this.state.styleFilters.slice();
+        for (var i = 0; i < styleFiltersClone.length; i++) {
+            if (styleFiltersClone[i].type === 'deg' || styleFiltersClone[i].type === 'px'){
+                styleFiltersClone[i].value = styles[styleFiltersClone[i].name]
+            } else {
+
+                styleFiltersClone[i].value = Math.round(styles[styleFiltersClone[i].name] * 100);
+            }
+        }
 
         this.setState({
-
-            filter: val
+            filter: val,
+            styleFilters: styleFiltersClone
         });
 
     };
@@ -127,7 +138,7 @@ class EditImage extends React.Component {
     };
 
     onUpdateStyle(val, id) {
-        var styleFiltersClone = this.state.styleFilters.slice();
+        let styleFiltersClone = this.state.styleFilters.slice();
         for (var i = 0; i < styleFiltersClone.length; i++) {
 
             if (id == styleFiltersClone[i].id) {
@@ -139,39 +150,39 @@ class EditImage extends React.Component {
     };
 
     render() {
-
+     
         return (
             <Fragment>
-				
-				<section id="imitationgram" >
-				<div className="l-container">
-						<Fragment>
-							<Button onClick={this.toggle} > Upload Image  
-							
+                
+                <section id="imitationgram" >
+                <div className="l-container">
+                        <Fragment>
+                            <Button onClick={this.toggle} > Upload Image  
+                            
 
-									<DragImage onUpdate={this.onUpdatePhoto} end={this.state.end}  />
-								
-							</Button>
+                                    <DragImage onUpdate={this.onUpdatePhoto} end={this.state.end}  />
+                                
+                            </Button>
 
-					
-						</Fragment>
-						<div className="image-rendered">
-							<Photo photo={this.state.picture} filter={this.state.filter} styleFilters={this.state.styleFilters} />
-						</div>
-					<div id="filters-items" >
-						<FiltersItems action={this.onUpdateFilter} />
-					</div>
-					
-					
-				</div>
-			
-				
-				</section>
-				<section id="edit-panel">
-						<EditPanel onUpdate={this.onUpdateStyle}  styleFilters={this.state.styleFilters}/>
-				</section>
-				<div className="clearfix"></div>
-			</Fragment>
+                    
+                        </Fragment>
+                        <div className="image-rendered">
+                            <Photo photo={this.state.picture} filter={this.state.filter} styleFilters={this.state.styleFilters} />
+                        </div>
+                    <div id="filters-items" >
+                        <FiltersItems action={this.onUpdateFilter} />
+                    </div>
+                    
+                    
+                </div>
+            
+                
+                </section>
+                <section id="edit-panel">
+                        <EditPanel onUpdate={this.onUpdateStyle} styles={this.state.styles} styleFilters={this.state.styleFilters}/>
+                </section>
+                <div className="clearfix"></div>
+            </Fragment>
         );
     }
 }

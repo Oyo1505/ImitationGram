@@ -14,7 +14,7 @@ import imageGram from '../images/imageGram.jpg'
 
 	handleFilter(e)  {
 		e.preventDefault();
-		this.props.action(e.target.dataset.name)
+		this.props.action(e.target.dataset.name, this.props.styles)
 		this.setState({inputField: e.target.dataset.name});
 
 		}
