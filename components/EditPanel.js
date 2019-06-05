@@ -16,14 +16,14 @@ import CssCode from './CssCode';
 	}
 	
 	render() {
-		var {styleFilters, styles} = this.props;
+		var {styleFilters, styles, before} = this.props;
 		
 		return (
 			<div>
 				<h5>Filters Control</h5>
 					<ItemsSliders handler={this.handler} styleFilters={styleFilters}  />
 				<h5>Css</h5>
-				 	<CssCode  styleFilters={styleFilters} styles={styles}/>
+				 	<CssCode  styleFilters={styleFilters} styles={styles} before={before} />
 			</div>
 		);
 	}

@@ -42,7 +42,12 @@ class EditImage extends React.Component {
         this.state = {
             picture: imageGram,
             filter: '',
-            stylesBefore: [],
+            stylesBefore: {
+                    "background" : "rgba(0, 0, 0, 0)",
+                    "content" : " ",
+                    "mixBlendMode" : "normal",
+                    "opacity" : 0
+                },
             styleFilters: [{
                     id: 0,
                     name: 'contrast',
@@ -111,10 +116,9 @@ class EditImage extends React.Component {
     };
 
     onUpdateFilter(val, styles) {
-     console.log(styles.before)
         let styleFiltersClone = this.state.styleFilters.slice();
         for (var i = 0; i < styleFiltersClone.length; i++) {
-            if (styleFiltersClone[i].type === 'deg' || styleFiltersClone[i].type === 'px'){
+            if (styleFiltersClone[i].type === 'deg' || styleFiltersClone[i].type === 'px') {
                 styleFiltersClone[i].value = styles[styleFiltersClone[i].name]
             } else {
 
@@ -124,6 +128,7 @@ class EditImage extends React.Component {
 
         this.setState({
             filter: val,
+            stylesBefore: styles.before,
             styleFilters: styleFiltersClone
         });
 
@@ -150,7 +155,7 @@ class EditImage extends React.Component {
     };
 
     render() {
-     
+
         return (
             <Fragment>
                 
@@ -179,7 +184,7 @@ class EditImage extends React.Component {
                 
                 </section>
                 <section id="edit-panel">
-                        <EditPanel onUpdate={this.onUpdateStyle} styles={this.state.styles} styleFilters={this.state.styleFilters}/>
+                        <EditPanel onUpdate={this.onUpdateStyle} styles={this.state.styles} before={this.state.stylesBefore} styleFilters={this.state.styleFilters}/>
                 </section>
                 <div className="clearfix"></div>
             </Fragment>

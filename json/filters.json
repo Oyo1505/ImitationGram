@@ -10,7 +10,13 @@
 			"brightness": 1.1,
 			"invert": 0,
 			"blur": 0,
-			"grayscale" : 0
+			"grayscale" : 0,
+			"before" : {
+				"background" : "rgba(243, 106, 188, 0.3)",
+				"content" : " ",
+				"mixBlendMode" : "screen",
+				"opacity" : 0
+				}
 			}
 		
 	},
@@ -21,17 +27,17 @@
 			"sepia": 0.5,
 			"hue-rotate" : -30,
 			"saturate" : 1.4,
-			"contrast": 0,
-			"brightness": 0,
+			"contrast": 1,
+			"brightness": 1,
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgba(125, 105, 24, .1)",
-				"content" : "",
-				"mix-blend-mode" : "multiply",
+				"content" : " ",
+				"mixBlendMode" : "multiply",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -47,12 +53,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "linear-gradient(to right, rgba(66, 10, 14, .2), transparent)",
 				"content" : "",
-				"mix-blend-mode" : "darken",
+				"mixBlendMode" : "darken",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -68,12 +74,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : " rgba(161, 44, 199, .31)",
 				"content" : "",
-				"mix-blend-mode" : "lighten",
+				"mixBlendMode" : "lighten",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -89,12 +95,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(circle, rgba(168, 223, 193, .4) 70%, rgb(196, 183, 200))",
 				"content" : "",
-				"mix-blend-mode" : "overlay",
+				"mixBlendMode" : "overlay",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -110,12 +116,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : " rgba(127, 187, 227, .2)",
 				"content" : "",
-				"mix-blend-mode" : "overlay",
+				"mixBlendMode" : "overlay",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -131,12 +137,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(circle, rgb(208, 186, 142) 20%, rgb(54, 3, 9) 85%, rgb(29, 2, 16) 100%)",
 				"content" : "",
-				"mix-blend-mode" : "overlay",
+				"mixBlendMode" : "overlay",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -152,12 +158,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(circle, rgb(208, 186, 142) 20%, rgb(54, 3, 9) 85%, rgb(29, 2, 16) 100%)",
 				"content" : "",
-				"mix-blend-mode" : "overlay",
+				"mixBlendMode" : "overlay",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -174,12 +180,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(circle, rgb(166, 177, 255) 50%, rgb(52, 33, 52))",
 				"content" : "",
-				"mix-blend-mode" : "multiply",
+				"mixBlendMode" : "multiply",
 				"opacity" : 0.5
-				}]
+				}
 			}
 		
 	},
@@ -195,12 +201,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgba(0, 0, 0, 0)",
 				"content" : "",
-				"mix-blend-mode" : "normal",
+				"mixBlendMode" : "normal",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -216,12 +222,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "background: rgb(183, 125, 33)",
 				"content" : "",
-				"mix-blend-mode" : "overlay",
+				"mixBlendMode" : "overlay",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -237,12 +243,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgba(242, 242, 242, 0.8)",
 				"content" : "",
-				"mix-blend-mode" : "darken",
+				"mixBlendMode" : "darken",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -258,12 +264,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(circle, transparent 70%, rgb(34, 34, 34) 150%)",
 				"content" : "",
-				"mix-blend-mode" : "multiply",
+				"mixBlendMode" : "multiply",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -279,12 +285,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgba(3, 230, 26, .20)",
 				"content" : "",
-				"mix-blend-mode" : "hue",
+				"mixBlendMode" : "hue",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -300,12 +306,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(circle at 40% 40%, rgba(255, 255, 255, .8), rgba(255, 200, 200, .6), rgb(17, 17, 17) 60%)",
 				"content" : "",
-				"mix-blend-mode" : "overlay",
+				"mixBlendMode" : "overlay",
 				"opacity" : 0.4
-				}]
+				}
 			}
 		
 	},
@@ -321,12 +327,12 @@
 			"grayscale" : 1,
 			"invert": 0,
 			"blur": 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgb(160, 160, 160)",
 				"content" : "",
-				"mix-blend-mode" : "soft-light",
+				"mixBlendMode" : "soft-light",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -342,12 +348,12 @@
 			"grayscale" : 0,
 			"invert": 0,
 			"blur": 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgba(247, 176, 153, .56)",
 				"content" : "",
-				"mix-blend-mode" : "darken",
+				"mixBlendMode" : "darken",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -363,12 +369,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "linear-gradient(to bottom, rgb(0, 91, 154), rgb(230, 193, 61))",
 				"content" : "",
-				"mix-blend-mode" : "soft-light",
+				"mixBlendMode" : "soft-light",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -384,12 +390,12 @@
 			"grayscale" : 0,
 			"invert": 0,
 			"blur": 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgb(239, 205, 173)",
 				"content" : "",
-				"mix-blend-mode" : "soft-light",
+				"mixBlendMode" : "soft-light",
 				"opacity": 0.5
-				}]
+				}
 			}
 		
 	},
@@ -405,12 +411,12 @@
 			"grayscale" : 0,
 			"invert": 0,
 			"blur": 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgba(125, 105, 24, 0.5)",
 				"content" : "",
-				"mix-blend-mode" : "soft-light",
+				"mixBlendMode" : "soft-light",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -426,12 +432,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgba(240, 149, 128, .2)",
 				"content" : "",
-				"mix-blend-mode" : "soft-light",
+				"mixBlendMode" : "soft-light",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -447,12 +453,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(circle, rgb(128, 78, 15), rgb(59, 0, 59))",
 				"content" : "",
-				"mix-blend-mode" : "screen",
+				"mixBlendMode" : "screen",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -468,12 +474,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgb(58, 3, 57)",
 				"content" : "",
-				"mix-blend-mode" : "exclusion",
+				"mixBlendMode" : "exclusion",
 				"opacity": 0.5
-				}]
+				}
 			}
 		
 	},
@@ -489,12 +495,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "rgb(0, 68, 204)",
 				"content" : "",
-				"mix-blend-mode" : "screen",
+				"mixBlendMode" : "screen",
 				"opacity": 0.3
-				}]
+				}
 			}
 		
 	},
@@ -510,12 +516,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0.5,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(40%, circle, rgb(212, 169, 175) 55%, black 150%)",
 				"content" : "",
-				"mix-blend-mode" : "overlay",
+				"mixBlendMode" : "overlay",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -531,12 +537,12 @@
 			"blur": 0,
 			"saturate" : 1,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(circle, rgb(230, 231, 224) 40%, rgba(43, 42, 161, .6) 110%)",
 				"content" : "",
-				"mix-blend-mode" : "color-burn",
+				"mixBlendMode" : "color-burn",
 				"opacity" : 0
-				}]
+				}
 			}
 		
 	},
@@ -552,12 +558,12 @@
 			"invert": 0,
 			"blur": 0,
 			"grayscale" : 0,
-			"before" : [{
+			"before" : {
 				"background" : "radial-gradient(circle, rgba(232, 197, 152, .8), transparent 90%)",
 				"content" : "",
-				"mix-blend-mode" : "overlay",
+				"mixBlendMode" : "overlay",
 				"opacity" : 0.6
-				}]
+				}
 			}
 		
 	}
