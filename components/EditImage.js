@@ -4,12 +4,12 @@ import classNames from 'classnames'
 import Modal from 'react-bootstrap/Modal';
 import Dropzone from 'react-dropzone'
 import styled from 'styled-components';
-import FiltersItems from '../components/FiltersItems';
-import Photo from '../components/Photo';
-import EditPanel from '../components/EditPanel';
-import imageGram from '../images/imageGram.jpg';
-import Snapshot from '../components/Snapshot';
-import DragImage from '../components/DragImage';
+import FiltersItems from './FiltersItems';
+import Photo from './Photo';
+import EditPanel from './EditPanel';
+import imageGram from '../../images/imageGram.jpg';
+import Snapshot from './Snapshot';
+import DragImage from './DragImage';
 
 const Button = styled.button `
     transition: 0.25s;
@@ -146,7 +146,7 @@ class EditImage extends React.Component {
         let styleFiltersClone = this.state.styleFilters.slice();
         for (var i = 0; i < styleFiltersClone.length; i++) {
 
-            if (id == styleFiltersClone[i].id) {
+            if (id === styleFiltersClone[i].id) {
                 styleFiltersClone[i].value = val;
 
             }

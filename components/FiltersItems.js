@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterItem from './FilterItem'
-import filters from '../json/filters.json'
+import filters from '../../json/filters.json'
 
 
 class FiltersItems extends React.Component {
@@ -23,7 +23,6 @@ class FiltersItems extends React.Component {
 	}
 	
 	render() {
-		//console.log(filters)
 		let filtersItems;
 		filtersItems = filters.map(function(filter){
 			return (<FilterItem key={`id-${filter.id}-${filter.filter}`} action={this.handler}  filter={filter.filter} styles={filter.css} />);

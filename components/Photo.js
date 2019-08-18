@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import axios from 'axios'
 
 
@@ -21,7 +20,7 @@ class Photo extends React.Component {
 		        formData, 
 		        { headers: { "X-Requested-With": "XMLHttpRequest" }})
 		        .then(response => console.log(response.data))
-				console.log(formData);
+
 
 		    // We would use axios `.all()` method to perform concurrent image upload to cloudinary.
 		    axios.all(image).then(() => {
@@ -41,8 +40,8 @@ class Photo extends React.Component {
 		return (
 			<div>
 				<figure style={{filter: `${filtersMap}`}} 
-					className='filter'><img src={this.props.photo}
-					 className={this.props.filter} alt="image" />
+					className='filter'>
+					<img src={this.props.photo} className={this.props.filter} alt="image-photo-imitation" />
 				</figure>
 						
 					
@@ -52,8 +51,3 @@ class Photo extends React.Component {
 	}
 }
 export default Photo
-
-/*<figure style={{filter: `${filtersMap}`}} 
-					className='filter'><img src={this.props.photo}
-					 className={this.props.filter} alt="image default" />
-					</figure>*/

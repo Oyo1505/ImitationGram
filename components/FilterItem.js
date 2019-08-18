@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import imageGram from '../images/imageGram.jpg'
+import imageGram from '../../images/imageGram.jpg'
 
 
  class FilterItem extends React.Component {
@@ -20,7 +20,7 @@ import imageGram from '../images/imageGram.jpg'
 		}
 
 	render() {
-	
+		
 		return (
 			<li className="thumb-filter" onClick={this.handleFilter}>
 				<div>
