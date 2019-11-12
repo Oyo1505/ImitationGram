@@ -4,12 +4,11 @@ import classNames from 'classnames'
 import Modal from 'react-bootstrap/Modal';
 import Dropzone from 'react-dropzone'
 import styled from 'styled-components';
-import FiltersItems from './FiltersItems';
-import Photo from './Photo';
-import EditPanel from './EditPanel';
-import imageGram from '../../images/imageGram.jpg';
-import Snapshot from './Snapshot';
-import DragImage from './DragImage';
+import FiltersItems from '../filters-thumbnails-items/';
+import Photo from '../main-image/';
+import EditPanel from '../edit-panel/';
+import imageGram from '../../../../images/imageGram.jpg';
+import DragImage from '../button-upload/';
 
 const Button = styled.button `
     transition: 0.25s;
@@ -110,6 +109,7 @@ class EditImage extends React.Component {
             gradientPosition: []
         };
     };
+    
     toggle() {
 
         this.setState({ end: !this.state.end });
@@ -175,7 +175,7 @@ class EditImage extends React.Component {
                             <Photo photo={this.state.picture} filter={this.state.filter} styleFilters={this.state.styleFilters} />
                         </div>
                     <div id="filters-items" >
-                        <FiltersItems action={this.onUpdateFilter} />
+                        <FiltersItems action={this.onUpdateFilter} styleFilters={this.state.styleFilters}/>
                     </div>
                     
                     
@@ -198,3 +198,5 @@ EditImage.propTypes = {
     filter: PropTypes.string,
     styleFilters: PropTypes.object,
 }
+
+/*TODO : INCLUDE REDUX HERE*/

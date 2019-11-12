@@ -17,7 +17,7 @@ class ItemSlider extends React.Component {
         this.setState({ value: e.target.value });
     }
     render() {
-        console.log(this.state.value)
+       
         return (
             <div className="item-slider" >
 				<div>

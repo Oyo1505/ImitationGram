@@ -1,5 +1,5 @@
 import React from 'react';
-import CssFilter from './CssFilter';
+import CssFilter from '../css-item-panel/';
 class CssCode extends React.Component {
 
     render() {

@@ -1,6 +1,6 @@
 import React from 'react';
-import FilterItem from './FilterItem'
-import filters from '../../json/filters.json'
+import FilterItem from '../filter-thumbnail-item/'
+import filters from '../../../../json/filters.json'
 
 
 class FiltersItems extends React.Component {

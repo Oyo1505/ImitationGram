@@ -1,6 +1,7 @@
 import React from 'react';
-import ItemsSliders from './ItemsSliders'
-import CssCode from './CssCode';
+import ItemsSliders from '../sliders-ranges-items/'
+import CssCode from '../css-panel/';
+
  class EditPanel extends React.Component {
 	
 
@@ -29,3 +30,4 @@ import CssCode from './CssCode';
 	}
 }
 export default EditPanel;
+
