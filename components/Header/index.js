@@ -30,22 +30,19 @@ logout = (event) => {
 
 render() {
 		const { isAuthenticated } = this.props.auth;
-	
 		return (
 			<StyledHeader>
 				<div className="nav-bar-header">
 					<Link to="/imitationgram">Accueil</Link>
 					{isAuthenticated &&
 						<Fragment>
-							<Link to="/dashboard">Dashboard</Link>
+							<Link to={`/dashboard/`}>Dashboard</Link>
 							<button onClick={this.logout}>Logout</button>
 						</Fragment>	
 					}
 					{!isAuthenticated &&
 						<Link to="/signin">Signin</Link>
 					}
-					
-					
 				</div>
 			</StyledHeader>
 		);
@@ -54,13 +51,14 @@ render() {
 
 Header.propTypes= {
 	logoutUser: PropTypes.func.isRequired,
-	auth : PropTypes.array.isRequired
+	auth : PropTypes.object.isRequired,
+	users: PropTypes.array.isRequired
 }
 
 
 const mapStateToProps =(state) => {
 	return {
-
+		users: state.users,
 		auth: state.auth
 	}
 }

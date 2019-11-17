@@ -17,7 +17,7 @@ class Signin extends React.Component {
 	}
 
 	souldComponentUpdate = (nextProps) => {
-			console.log(nextProps)
+			
 		if(nextProps.auth.isAuthenticated){	
 
 			this.props.history.push("/imitation")
@@ -28,7 +28,7 @@ class Signin extends React.Component {
 	        errors: nextProps.errors
 	      });
 	    }
-	    return true;
+	    return false;
 	}
 
 	onChange = (event) => {

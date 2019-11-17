@@ -17,14 +17,14 @@ class Signup extends React.Component {
 			errors: {},
 		}
 	}
-	shouldComponentUpdate (nextProps){
+	/*shouldComponentUpdate (nextProps){
 		if(nextProps.errors){
 			this.setState({
 				errors : nextProps.errors
 			});
 		}
 		return true;
-	}
+	}*/
 
 	componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
@@ -53,7 +53,7 @@ class Signup extends React.Component {
 
 	render() {
 
-		const {errors } = this.state;
+		const { errors } = this.state;
 		return (
 			<div>
 				 <form noValidate onSubmit={this.onSubmit}>
