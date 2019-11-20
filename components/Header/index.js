@@ -36,7 +36,7 @@ render() {
 					<Link to="/imitationgram">Accueil</Link>
 					{isAuthenticated &&
 						<Fragment>
-							<Link to={`/dashboard/`}>Dashboard</Link>
+							<Link to={`/dashboard`}>Dashboard</Link>
 							<button onClick={this.logout}>Logout</button>
 						</Fragment>	
 					}

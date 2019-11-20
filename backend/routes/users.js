@@ -24,13 +24,13 @@ router.post("/register", (req, res) => {
     if (!isValid) {
         return res.status(400).json(errors);
     }
- 
+    console.log('register')
     User.findOne({email : req.body.email}).then(user => {
       if(user) {
         return res.status(400).json({email:"Email already Exists"})
       }else{
         const newUser = new User({
-          username: req.body.username,
+          name: req.body.name,
           email: req.body.email,
           password: req.body.password
         });
@@ -54,7 +54,7 @@ router.put('/:id', (req, res) => {
 
   User.findById(req.params.id)
         .then(user => {
-          user.username = req.body.username;
+          user.name = req.body.name;
           user.email = req.body.email
           user.save()
                 .then(user => res.json(user))
@@ -92,7 +92,7 @@ const email = req.body.email;
         // Create JWT Payload
         const payload = {
           id: user._id,
-          name: user.username
+          name: user.name
         };
 // Sign token
         jwt.sign(
@@ -125,9 +125,9 @@ router.route('/').get((req, res) => {
 });
 
 /*router.route('/add').post((req, res) => {
-    const username = req.body.username;
+    const name = req.body.name;
 
-    const newUser = new User({ username });
+    const newUser = new User({ name });
 
     newUser.save()
         .then(() => res.json('User added!'))
@@ -150,7 +150,7 @@ router.route('/:id').delete((req, res) => {
 router.route('/:id').put((req, res) => {
     User.findById(req.params.id)
         .then(user => {
-            user.username = req.body.username;
+            user.name = req.body.name;
             user.save()
                 .then(() => res.json('User updated!'))
                 .catch(err => res.status(400).json('Error: ' + err));

@@ -32,9 +32,10 @@ export class UserPage extends React.Component {
 	render() {
 		return (
 			<div>
+				<Header />
 				<form>
 					<label>
-						<input name="username" onChange={this.onChangeValue} value={this.state.user.username} /> 
+						<input name="name" onChange={this.onChangeValue} value={this.state.user.name} /> 
 					</label>
 					<label>
 						<input name="email" onChange={this.onChangeValue} value={this.state.user.email} /> 
@@ -52,7 +53,7 @@ const getUserById = (users, userId) => {
 }
 const mapStateToProps = (state, ownProps) => {
 	let user = {  	"_id": "",
-				    "username": "",
+				    "name": "",
 				    "email": "",
 					"images_id": [],
 				};

@@ -10,7 +10,7 @@ class Signup extends React.Component {
 	constructor(props){
 		super();
 		this.state = {
-			username: "",
+			name: "",
 			email: "",
 			password: "",
 			password2: "",
@@ -41,7 +41,7 @@ class Signup extends React.Component {
 		
 
 		const newUser = {
-			username: this.state.username,
+			name: this.state.name,
 			email: this.state.email,
 			password: this.state.password,
 			password2: this.state.password2,
@@ -63,10 +63,10 @@ class Signup extends React.Component {
 				</label>
 				<input onChange={this.onChange} 
 				type="text"  
-				name="username" 
-				value={this.state.username}
+				name="name" 
+				value={this.state.name}
 				 className={classnames("", {
-                    invalid: errors.username
+                    invalid: errors.name
                   })}
 				/>
 				<span className="red-text">{errors.name}</span>

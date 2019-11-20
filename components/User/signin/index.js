@@ -1,52 +1,52 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import classnames from "classnames";
 import PropTypes from "prop-types";
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { loginUser } from "../../../../actions/";
 
 class Signin extends React.Component {
-	constructor(props){
-		super();
-		this.state = {
-			email: "",
-			password: "",
-			errors: {}
-		}
-	}
+    constructor(props) {
+        super();
+        this.state = {
+            email: "",
+            password: "",
+            errors: {}
+        }
+    }
 
-	souldComponentUpdate = (nextProps) => {
-			
-		if(nextProps.auth.isAuthenticated){	
+    souldComponentUpdate = (nextProps) => {
 
-			this.props.history.push("/imitation")
-		}
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push("/imitation")
+        }
 
-		if (nextProps.errors) {
-	      this.setState({
-	        errors: nextProps.errors
-	      });
-	    }
-	    return false;
-	}
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+        return false;
+    }
 
-	onChange = (event) => {
-		this.setState({ [event.target.name]: event.target.value });
-	}	
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value });
+    }
 
-	onSubmit = (event) => {
-		event.preventDefault()
-		const userData = {
-			email: this.state.email,
-			password: this.state.password
-		};
-		this.props.loginUser(userData)
-	}
-	render() {
-		const {errors} = this.state
-		return (
-			<div>
+    onSubmit = (event) => {
+        event.preventDefault()
+        const userData = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        this.props.loginUser(userData)
+    }
+    render() {
+        const { errors } = this.state
+        return (
+            <div>
 				 <form noValidate onSubmit={this.onSubmit}>
 				<div>
 				<label>
@@ -90,18 +90,18 @@ class Signin extends React.Component {
 				</form>
 				<p>Pas de compte ? <Link to="/signup" >Créer un compte</Link></p>
 			</div>
-		);
-	}
+        );
+    }
 }
 
 Signin.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
+    auth: state.auth,
+    errors: state.errors
 });
-export default connect(mapStateToProps, {loginUser})(withRouter(Signin));
+export default connect(mapStateToProps, { loginUser })(withRouter(Signin));
