@@ -52,7 +52,7 @@ render() {
 Header.propTypes= {
 	logoutUser: PropTypes.func.isRequired,
 	auth : PropTypes.object.isRequired,
-	users: PropTypes.array.isRequired
+	users: PropTypes.object.isRequired
 }
 
 
