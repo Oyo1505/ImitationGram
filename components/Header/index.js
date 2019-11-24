@@ -23,9 +23,10 @@ const StyledHeader = styled.header`
 
 class Header extends React.Component {
 
-logout = (event) => {
+logout = async (event) => {
 	event.preventDefault();
-	this.props.logoutUser()
+	this.props.logoutUser();
+	this.props.history.push("/imitationgram");
 }
 
 render() {

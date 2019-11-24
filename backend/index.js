@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 require('dotenv').config();
 
 
-
+console.log(process.env.PASSWORD.trim())
 const app = express();
 const dev = app.get('env') !== 'production';
 
@@ -105,7 +105,7 @@ app.post('/api/form', (req, res) => {
     var transport = nodemailer.createTransport({
         service: 'gmail',
         host: "smtp.gmail.com",
-        secure: true,
+        secure: false,
         port: 465,
         auth: {
             user: process.env.EMAIL,
@@ -115,7 +115,7 @@ app.post('/api/form', (req, res) => {
     // step 2 
     let mailOptions = {
         from: `${req.body.name}`, // sender address
-        to: "rigoulet.henri.pierre@gmail.com", // list of receivers
+        to: process.env.EMAIL, // list of receivers
         subject: "Mail de formulaire de contact du CV", // Subject line
         text: 'Premier Contact', // plain text body
         html: htmlEMail // html body
@@ -123,7 +123,7 @@ app.post('/api/form', (req, res) => {
     // step 3/
     transport.sendMail(mailOptions, (err, info) => {
         if (err) { return console.log(err) }
-        console.log('message sent', info.message);
+        console.log('message sent', info);
         console.log('message URL %s', nodemailer.getTestMessageUrl(info))
     });
 

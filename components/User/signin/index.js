@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import Header from '../../Header/'
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import PropTypes from "prop-types";
-import { withRouter } from 'react-router-dom';
 import { loginUser } from "../../../../actions/";
 
 class Signin extends React.Component {
@@ -19,7 +19,8 @@ class Signin extends React.Component {
     souldComponentUpdate = (nextProps) => {
 
         if (nextProps.auth.isAuthenticated) {
-            this.props.history.push("/imitation")
+      
+            this.props.history.push("/imitationgram");
         }
 
         if (nextProps.errors) {
@@ -29,24 +30,25 @@ class Signin extends React.Component {
         }
         return false;
     }
-
     onChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value });
     }
 
-    onSubmit = (event) => {
-        event.preventDefault()
+    onSubmit = async (event) => {
+        event.preventDefault();
         const userData = {
             email: this.state.email,
             password: this.state.password
         };
-        this.props.loginUser(userData)
+        this.props.loginUser(userData);
+       this.props.history.push("/imitationgram")
     }
     render() {
         const { errors } = this.state
         return (
             <div style={{ height: "5vh" }} className="container valign-wrapper">
+                <Header /> 
 				 <form noValidate onSubmit={this.onSubmit}>
 				<div>
 				<label>
@@ -104,4 +106,4 @@ const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors
 });
-export default connect(mapStateToProps, { loginUser })(withRouter(Signin));
+export default connect(mapStateToProps, { loginUser })(Signin);

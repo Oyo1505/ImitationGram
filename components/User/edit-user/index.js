@@ -27,6 +27,8 @@ class UserPage extends React.Component {
     deleteUser = (event) => {
         event.preventDefault();
         this.props.actions.deleteUser(this.state.user);
+        this.props.actions.logoutUser();
+        this.props.history.push("/imitationgram");
     }
     onSubmit = (event) => {
         event.preventDefault();

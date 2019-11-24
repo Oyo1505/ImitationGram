@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from "prop-types";
 import EditUser from "../User/edit-user/"
 import Header from '../Header/';
-import {bindActionCreators} from 'redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as userActions from "../../../actions/";
+
 
  class Dashboard extends React.Component {
    
@@ -13,7 +12,7 @@ import * as userActions from "../../../actions/";
 
         return (
 
-            <div>
+        <div style={{ height: "5vh" }} className="container valign-wrapper">
         <Header  /> 
         <div className="row">
           <div className="col s12 center-align">

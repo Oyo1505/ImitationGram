@@ -1,61 +1,64 @@
 import React from 'react';
 import { connect } from "react-redux";
+import Header from '../../Header';
 import classnames from "classnames";
 import PropTypes from "prop-types";
-import {withRouter} from 'react-router-dom';
 import { registerUser } from "../../../../actions/";
 
 class Signup extends React.Component {
 
-	constructor(props){
-		super();
-		this.state = {
-			name: "",
-			email: "",
-			password: "",
-			password2: "",
-			errors: {},
-		}
-	}
-	/*shouldComponentUpdate (nextProps){
-		if(nextProps.errors){
-			this.setState({
-				errors : nextProps.errors
-			});
-		}
-		return true;
-	}*/
-
-	componentDidMount() {
-    // If logged in and user navigates to Register page, should redirect them to dashboard
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+    constructor(props) {
+        super();
+        this.state = {
+            name: "",
+            email: "",
+            password: "",
+            password2: "",
+            errors: {},
+        }
     }
-  }
-	onChange = (event) => {
-		this.setState({ [event.target.name]: event.target.value })
-		
-	}	
+    /*shouldComponentUpdate (nextProps){
+    	if(nextProps.errors){
+    		this.setState({
+    			errors : nextProps.errors
+    		});
+    		return true;
+    	}
+    	return false;
+    }*/
 
-	onSubmit = (event) => {
-		
+    componentDidMount() {
+        // If logged in and user navigates to Register page, should redirect them to dashboard
+        if (this.props.auth.isAuthenticated) {
+           this.props.history.push("/dashboard");
+        }
+    }
 
-		const newUser = {
-			name: this.state.name,
-			email: this.state.email,
-			password: this.state.password,
-			password2: this.state.password2,
-		};
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value })
 
-		this.props.registerUser(newUser, this.props.history)
-		
-	}
+    }
 
-	render() {
+    onSubmit = async (event) => {
+    	event.preventDefault();
+        const newUser = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            password2: this.state.password2,
+        };
 
-		const { errors } = this.state;
-		return (
-			<div style={{ height: "5vh" }} className="container valign-wrapper">
+        this.props.registerUser(newUser, this.props.history);
+        this.props.history.push("/imitationgram");
+    }
+
+    render() {
+
+        const { errors } = this.state;
+        return (
+            <div style={{ height: "5vh" }} className="container valign-wrapper">
+            <Header /> 
 				 <form noValidate onSubmit={this.onSubmit}>
 				<div>
 				<label>
@@ -114,23 +117,23 @@ class Signup extends React.Component {
 					<span className="red-text">{errors.password2}</span>
 				</div>
 				<div>
-					<button type="submit">Login</button>
+					<button onClick={this.onSubmit} type="button">Signup</button>
 				</div>
 				</form>
 
 
 			</div>
-		);
-	}
+        );
+    }
 }
 Signup.propTypes = {
-  registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+    registerUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-	auth:state.auth,
-	errors: state.errors
+    auth: state.auth,
+    errors: state.errors
 });
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Signup))
+export default connect(mapStateToProps, { registerUser })(Signup);

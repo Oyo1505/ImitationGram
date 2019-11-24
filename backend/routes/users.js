@@ -24,7 +24,6 @@ router.post("/register", (req, res) => {
     if (!isValid) {
         return res.status(400).json(errors);
     }
-    console.log('register')
     User.findOne({email : req.body.email}).then(user => {
       if(user) {
         return res.status(400).json({email:"Email already Exists"})
@@ -65,8 +64,9 @@ router.put('/:id', (req, res) => {
 
 //TODO
 router.delete('/:id', (req, res) => {
-  
-    
+    User.findByIdAndDelete(req.params.id)
+    .then( user => res.json('User deleted.'))
+    .catch(err =>res.status(400).json('Error: ' + err));
 });
 
 router.post("/login", (req, res) => {
@@ -91,7 +91,7 @@ const email = req.body.email;
         // User matched
         // Create JWT Payload
         const payload = {
-          id: user._id,
+          _id: user._id,
           name: user.name
         };
 // Sign token
