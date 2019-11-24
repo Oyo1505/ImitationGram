@@ -24,24 +24,24 @@ class UserPage extends React.Component {
         user[stateName] = event.target.value;
         this.setState({ user: user });
     }
-
+    deleteUser = (event) => {
+        event.preventDefault();
+        this.props.actions.deleteUser(this.state.user);
+    }
     onSubmit = (event) => {
         event.preventDefault();
         this.props.actions.editUser(this.state.user);
     }
     render() {
         return (
-            <div>
+            <div style={{ height: "5vh" }} className="container valign-wrapper">
 				<Header />
-				<form>
-					<label>
-						<input name="name" onChange={this.onChangeValue} value={this.state.user.name} /> 
-					</label>
-					<label>
-						<input name="email" onChange={this.onChangeValue} value={this.state.user.email} /> 
-					</label>
-					<button onClick={this.onSubmit}> Update info</button>
-				</form>
+                    <UserForm 
+                        user={this.state.user}
+                        onChange={this.onChangeValue}
+                        onSave={this.onSubmit}
+                    />
+                    <button onClick={this.deleteUser}> Delete </button>
 			</div>
         );
     }
@@ -49,8 +49,7 @@ class UserPage extends React.Component {
 
 UserPage.propTypes = {
     user: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired,
-    editUser: PropTypes.func.isRequired,
+    actions: PropTypes.object.isRequired
 }
 
 const getUserById = (users, userId) => {

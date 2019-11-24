@@ -52,13 +52,12 @@ render() {
 Header.propTypes= {
 	logoutUser: PropTypes.func.isRequired,
 	auth : PropTypes.object.isRequired,
-	users: PropTypes.object.isRequired
+
 }
 
 
 const mapStateToProps =(state) => {
 	return {
-		users: state.users,
 		auth: state.auth
 	}
 }

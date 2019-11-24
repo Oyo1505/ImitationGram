@@ -46,7 +46,7 @@ class Signin extends React.Component {
     render() {
         const { errors } = this.state
         return (
-            <div>
+            <div style={{ height: "5vh" }} className="container valign-wrapper">
 				 <form noValidate onSubmit={this.onSubmit}>
 				<div>
 				<label>

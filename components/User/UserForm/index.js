@@ -14,6 +14,12 @@ class UserForm extends React.Component {
 						value={this.props.user.name}
 						onChange={this.props.onChange}
 					/>
+					<TextInput 
+						name="email"
+						label="label"
+						value={this.props.user.email}
+						onChange={this.props.onChange}
+					/>
 					<input 
 						type="submit"
 						disabled={this.props.saving}
