@@ -5,5 +5,6 @@ export default {
 		 loading: false
 	},
 	users:{},
+	images:{},
 	errors: {}
 }

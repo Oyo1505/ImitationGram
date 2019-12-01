@@ -11,7 +11,6 @@ class ImitationGramApp extends React.Component {
             <div id="imitation-app">
            	 <div style={{ height: "5vh" }} className="container valign-wrapper">
 				<Header  />
-				
 
 				</div>	
 			</div>

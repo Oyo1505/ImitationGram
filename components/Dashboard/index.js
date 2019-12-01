@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import EditUser from "../User/edit-user/"
 import Header from '../Header/';
+import AddImage from '../EditImage/add-image'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -17,13 +18,10 @@ import { connect } from 'react-redux';
         <div className="row">
           <div className="col s12 center-align">
                 <b>Hey there {this.props.user.name},</b> 
-               <p className="flow-text grey-text text-darken-1">
-                You are logged into a full-stack{" "} 
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
-              </p>
-           
+                <p><Link to={`/dashboard/edit/${this.props.auth.user._id}`}>Edit Your Profil</Link></p>
+                <AddImage />
             <section>
-             <Link to={`/dashboard/edit/${this.props.auth.user._id}`}>Edit Your Profil</Link>
+             <h3> Pictures </h3>
             </section>
           </div>
         </div>

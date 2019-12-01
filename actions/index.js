@@ -3,6 +3,7 @@ import axios from 'axios';
 import setAuthToken from "../Utilities/setAuthToken";
 import jwt_decode from "jwt-decode";
 
+/*USER */
 // LOAD users 
 
 export const loadUser = (userId) => {
@@ -10,12 +11,8 @@ export const loadUser = (userId) => {
         .then(response => {
             return response;
         })
-        .catch(err =>
-            dispatch({
-                type: types.GET_ERRORS,
-                payload: err.response.data
-            })
-        )
+        .catch(err =>{throw(err)});
+
 };
 
 export const loadUsersSuccess = users => {
@@ -28,24 +25,16 @@ export const loadAllUsers = () => dispatch => {
         .then(res => {
             dispatch(loadUsersSuccess(res.data))
         })
-        .catch(err =>
-            dispatch({
-                type: types.GET_ERRORS,
-                payload: err.data
-            })
-        );
+         .catch(err =>{throw(err)});
+
 }
 // Register User
 export const registerUser = (userData, history) => dispatch => {
     axios
         .post("http://localhost:5000/users/register", userData)
         .then(res => history.push("/signin")) // re-direct to login on successful register
-        .catch(err =>
-            dispatch({
-                type: types.GET_ERRORS,
-                payload: err.data
-            })
-        );
+         .catch(err =>{throw(err)});
+
 };
 // Login - get user token
 export const loginUser = userData => dispatch => {
@@ -67,12 +56,8 @@ export const loginUser = userData => dispatch => {
             dispatch(setCurrentUser(decoded));
 
         })
-        .catch(err =>
-            dispatch({
-                type: types.GET_ERRORS,
-                payload: err.data
-            })
-        );
+        .catch(err =>{throw(err)});
+
 };
 
 export const editUser = userData => dispatch => {
@@ -111,26 +96,75 @@ export const logoutUser = () => dispatch => {
     // Set current user to empty object {} which will set isAuthenticated to false
     dispatch(setCurrentUser({}));
 };
+
+export const deleteUser = userData => dispatch =>{
+  axios.delete(`http://localhost:5000/users/${userData._id}`, userData)
+    .then( res =>{
+        dispatch(deleteUserSuccess(userData));
+    })
+    .catch(err =>{throw(err)});
+}
+
+export const deleteUserSuccess = userData =>  {
+    return {
+        type: types.DELETE_USER_SUCCESS,
+        payload: userData
+    };
+};
+
+
+/*IMAGE*/
+
+export const loadImagesSuccess = images => {
+
+    return { type: types.LOAD_IMAGES_SUCCESS, payload: images };
+};
+
+export const loadAllImages = () => dispatch => {
+    axios.get('http://localhost:5000/images/')
+        .then(res => {
+          console.log(res.data)
+            dispatch(loadImagesSuccess(res.data))
+        })
+         .catch(err =>{throw(err)});
+
+}
+
+
+export const addImage = imageData => dispatch => {
+  axios.post(`http://localhost:5000/images/add-image`, imageData)
+  .then( res => {
+    dispatch(addImageSuccess(imageData));
+  })
+  .catch( err => throw(err));
+}
+
+export const addImageSuccess = imageData => {
+  return {
+    type: types.ADD_IMAGE_SUCCESS,
+    payload: imageData
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*USER*/
 /*
-export const loadUserSuccess = (user) => {
-    return {type : types.LOAD_USER_SUCCESS, user};
-};
-export const loadUsersSuccess = () => {
-    return {type : types.LOAD_USERS_SUCCESS, users};
-};
-
-export const updateUserSuccess = (user) => {
-    return {type: types.UPDATE_USER_SUCCESS, user}
-}
-
-export const createUserSuccess = (user) => {
-  return { type: types.CREATE_USER_SUCCESS, user }
-}
-
-export const deleteUserSuccess = (user) => {
-  return { type: types.DELETE_USER_SUCCESS, user }
-}
 export function createUser(user){
   
   return  (dispatch) =>   {

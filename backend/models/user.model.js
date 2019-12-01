@@ -10,6 +10,7 @@ const userSchema = new Schema({
 	email:{
 		type: String,
 		required: true,
+		unique: true
 		},
 	password : {
 		type:String,
@@ -22,6 +23,10 @@ const userSchema = new Schema({
 	images_id: {
 		type: Array,
 		required: false
+	},
+	followers_id:{
+		 type:  Array,
+		 required:false 
 	}
 	
 });

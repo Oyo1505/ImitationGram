@@ -1,6 +1,6 @@
 import * as types from './../../actions/types';
 import initialState from '../initialState';
-
+const isEmpty = require("is-empty");
 
 export default function usersReducers(state = initialState.users, action) {
 	
@@ -13,9 +13,10 @@ export default function usersReducers(state = initialState.users, action) {
         	Object.assign({}, action.payload)
      	 ]
      	 case types.DELETE_USER_SUCCESS:{
+
         const newState = Object.assign([], state);
-        const indexOfUserToDelete = state.findIndex(user => {
-          return user._id == action.user._id
+        const indexOfUserToDelete = state.findIndex(user => {	
+          return user._id === action.payload._id
         })
         newState.splice(indexOfUserToDelete, 1);
          return newState;

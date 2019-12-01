@@ -36,7 +36,7 @@ class UserPage extends React.Component {
     }
     render() {
         return (
-            <div style={{ height: "5vh" }} className="container valign-wrapper">
+            <div style={{ height: "5vh" }} className="container valign-wrapper" data-test="editUserComponent">
 				<Header />
                     <UserForm 
                         user={this.state.user}

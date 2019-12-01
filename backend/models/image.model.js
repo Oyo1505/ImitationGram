@@ -3,17 +3,26 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const imageSchema = new Schema({
-	{
-		url: String,
-		required : true
+	
+	url:{
+		type: String,
+		required : true,
 	},
-	{
-		name: String,
-		required: true
+	name: {
+		type: String,
+		required: true,
 	},
-	{
-		date: Date,
+	date: {
+		type: Date,
 		default: Date.now
+	},
+	user_id:{
+		 type: String,
+		required: true,
+	},
+	likes:{
+		type: Number,
+		required:false,
 	}
 
 });

@@ -1,6 +1,5 @@
 import * as types from './../../actions/types';
 import initialState from '../initialState';
-import {withRouter } from 'react-router-dom';
 const isEmpty = require("is-empty");
 
 export default function userReducer(state = initialState.user, action) {
