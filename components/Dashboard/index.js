@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import EditUser from "../User/edit-user/"
+import EditUser from "../User/edit-user/";
+import ListImages from '../Image/list-images';
 import Header from '../Header/';
-import AddImage from '../EditImage/add-image'
+import AddImage from '../Image/add-image';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -22,6 +23,7 @@ import { connect } from 'react-redux';
                 <AddImage />
             <section>
              <h3> Pictures </h3>
+             <ListImages />
             </section>
           </div>
         </div>
