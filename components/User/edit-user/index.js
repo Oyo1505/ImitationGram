@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import * as userActions from "../../../../actions/";
 import { connect } from 'react-redux';
 
-class UserPage extends React.Component {
+class EditUser extends React.Component {
 
     constructor(props) {
 
@@ -49,7 +49,7 @@ class UserPage extends React.Component {
     }
 }
 
-UserPage.propTypes = {
+EditUser.propTypes = {
     user: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
 }
@@ -71,6 +71,7 @@ const mapStateToProps = (state, ownProps) => {
         "email": "",
         "images_id": [],
     };
+    console.log(ownProps)
     const userId = ownProps.match.params.id;
     const users = state.users;
     if (userId && state.users.length > 0) {
@@ -82,4 +83,4 @@ const mapStateToProps = (state, ownProps) => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EditUser);

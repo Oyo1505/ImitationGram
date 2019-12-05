@@ -1,7 +1,8 @@
 import React,{Fragment} from 'react';
 import PropTypes from 'prop-types'
 import loadingGif from '../../../../images/loading.gif';
-import { addImage } from "../../../../actions/";
+import {checkExtensionFile, getUserById } from '../../../../Utilities';
+import { addImage ,editUser } from "../../../../actions/";
 import  { connect } from 'react-redux';
  
 class AddImage extends React.Component {
@@ -11,21 +12,17 @@ class AddImage extends React.Component {
 		this.state = {
 			image:this.props.image,
 			loading: false,
+			user:this.props.user
 		}
 	}
 
-	checkExtensionFile = (string) => {
 
-		let reRegex = /([a-zA-Z0-9\s_\\.\-\(\):])+(.jpg|.jpeg|.png)$/i;
-		let testStringRgx = reRegex.test(string);
-
-		return testStringRgx;
-	}
 
 	uploadImage = async event => {
+
 		const files = event.target.files;
-	 
-		if(this.checkExtensionFile(files[0].name)){
+
+		if(checkExtensionFile(files[0].name)){
 			const data = new FormData();
 			data.append('file', files[0]);
 			data.append('upload_preset', 'imitationGram');
@@ -37,7 +34,7 @@ class AddImage extends React.Component {
 				body:data,
 				
 			});
-
+		
 			const file = await res.json();
 			this.setState({
 				image: {
@@ -49,7 +46,8 @@ class AddImage extends React.Component {
 				loading:false
 			});
 
-			this.props.addImage(this.state.image)
+			this.props.addImage(this.state.image);
+
 		}else{
 			//TODO MAKE A BETTER ALERT FOR WRONG FORMAT FILE
 			alert('wrong format must be .png .jpeg .jpg');
@@ -99,9 +97,23 @@ const mapStateToProps = (state) => {
 		'user_id':'',
 		'likes':0,
 	}
+	let user = {  
+	  "_id": "",
+      "name": "",
+      "email": "",
+       "images_id": [],
+     };      
+
+	const userId = state.auth.user._id;
+	const users = state.users
+	if(userId && users.length > 0 ){
+		 user = getUserById(users, userId);
+	}
 	return{
 		auth:state.auth,
-		image:image
+		image:image,
+		user: user
+
 	}
 
 }

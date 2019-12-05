@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import EditUser from "../User/edit-user/";
-import ListImages from '../Image/list-images';
 import Header from '../Header/';
-import AddImage from '../Image/add-image';
-import { Link } from 'react-router-dom';
+import UserPage from "../User/user-page/";
+import { getUserById } from '../../../Utilities/'
 import { connect } from 'react-redux';
 
 
@@ -19,12 +17,7 @@ import { connect } from 'react-redux';
         <div className="row">
           <div className="col s12 center-align">
                 <b>Hey there {this.props.user.name},</b> 
-                <p><Link to={`/dashboard/edit/${this.props.auth.user._id}`}>Edit Your Profil</Link></p>
-                <AddImage />
-            <section>
-             <h3> Pictures </h3>
-             <ListImages />
-            </section>
+                <UserPage user={this.props.user} />
           </div>
         </div>
       </div>
@@ -32,16 +25,14 @@ import { connect } from 'react-redux';
     }
 }
 
-const getUserById = (users, userId) => {
-    const user = Object.assign({}, users.find( user =>user._id === userId));
-    return user;
-}
 
 Dashboard.propTypes = {
     auth: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
+    users: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     let user = {    "_id": "",
                     "name": "",
                     "email": "",
