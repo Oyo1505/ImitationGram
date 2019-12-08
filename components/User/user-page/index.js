@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import { connect } from 'react-redux';
-import AddImage from '../../Image/add-image';
+
 import ListImages from '../../Image/list-images';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 		return (
 			<Fragment>
 				<p><Link to={`/dashboard/edit/${this.props.auth.user._id}`}>Edit Your Profil</Link></p>
-	                <AddImage />
+				<Link to={`/dashboard/add/`}><button> Upload an image</button></Link>
 	            <section>
 	             	<h3> Pictures </h3>
 	            	<ListImages userId={this.props.auth.user._id}/>

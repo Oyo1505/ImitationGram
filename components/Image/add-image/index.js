@@ -62,25 +62,28 @@ class AddImage extends React.Component {
 	render() {
 		const { loading, image} = this.state;
 		return (
-			<div data-test="addImageComponent">
-				<p>Upload</p> 
-				<input 
-				type='file'
-				name='file'
-				onChange={this.uploadImage}
-				/>
-			<br/>
-			{ loading ? (
-
-				<img src={loadingGif} alt="loading-gif"/>
-				)
-				: (
-				<Fragment>
-					<img src={image.url} alt="image-uploaded" /> 
-				</Fragment>
-				)
+			<div style={{ height: "5vh" }} className="container valign-wrapper" data-test="editUserComponent">
 			
-			}
+				<div data-test="addImageComponent">
+					<p>Upload</p> 
+					<input 
+					type='file'
+					name='file'
+					onChange={this.uploadImage}
+					/>
+				<br/>
+				{ loading ? (
+
+					<img src={loadingGif} alt="loading-gif"/>
+					)
+					: (
+					<Fragment>
+						<img src={image.url} alt="image-uploaded" /> 
+					</Fragment>
+					)
+				
+				}
+				</div>
 			</div>
 		);
 	}

@@ -16,6 +16,7 @@ import CV from "./containers/CV";
 import PrivateRoute from "./components/Imitation/PrivateRoute";
 import Dashboard from "./components/Imitation/Dashboard/";
 import EditUser from "./components/Imitation/User/edit-user/";
+import AddImage from './components/Imitation/Image/add-image';
 
 
 
@@ -39,6 +40,7 @@ class App extends Component {
               <Switch>
                 <PrivateRoute exact path="/dashboard/" component={Dashboard} />
                 <PrivateRoute  path="/dashboard/edit/:id" component={EditUser} />
+                <PrivateRoute path="/dashboard/add" component={AddImage} /> 
               </Switch>
         </div>
         );
