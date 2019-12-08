@@ -25,6 +25,7 @@ const mapStateToProps = (state, ownProps) => {
 	let images = []
 	if(state.images.length > 0){
 		images = getImagesUser(state.images, userId);
+
 	}
 	
 	return{

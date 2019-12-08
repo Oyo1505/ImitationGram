@@ -33,6 +33,7 @@ class EditUser extends React.Component {
     onSubmit = (event) => {
         event.preventDefault();
         this.props.actions.editUser(this.state.user);
+        
     }
     render() {
         return (

@@ -1,8 +1,10 @@
 import React,{Fragment} from 'react';
+import { withRouter } from "react-router-dom"
 import PropTypes from 'prop-types'
 import loadingGif from '../../../../images/loading.gif';
+import {bindActionCreators} from 'redux';
 import {checkExtensionFile, getUserById } from '../../../../Utilities';
-import { addImage ,editUser } from "../../../../actions/";
+import * as courseActions from "../../../../actions/";
 import  { connect } from 'react-redux';
  
 class AddImage extends React.Component {
@@ -19,7 +21,7 @@ class AddImage extends React.Component {
 
 
 	uploadImage = async event => {
-
+		event.preventDefault();
 		const files = event.target.files;
 
 		if(checkExtensionFile(files[0].name)){
@@ -46,7 +48,7 @@ class AddImage extends React.Component {
 				loading:false
 			});
 
-			this.props.addImage(this.state.image);
+			this.props.actions.addImage(this.state.image);
 
 		}else{
 			//TODO MAKE A BETTER ALERT FOR WRONG FORMAT FILE
@@ -85,9 +87,7 @@ class AddImage extends React.Component {
 }
 
 AddImage.propTypes = {
-	auth: PropTypes.object.isRequired,
-	image: PropTypes.object.isRequired,
-	addImage: PropTypes.func.isRequired
+	actions: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -115,6 +115,11 @@ const mapStateToProps = (state) => {
 		user: user
 
 	}
-
 }
-export default connect(mapStateToProps, {addImage})(AddImage);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(courseActions, dispatch)
+  };
+}
+export default connect(mapStateToProps , mapDispatchToProps)(withRouter(AddImage));
