@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from '../../Header/'
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -6,95 +6,93 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import { loginUser } from "../../../../actions/";
 
-class Signin extends React.Component {
-    constructor(props) {
-        super();
-        this.state = {
-            email: "",
-            password: "",
-            errors: {}
-        }
-    }
-
-    souldComponentUpdate = (nextProps) => {
-
+const Signin = React.memo((props) =>  {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
+    
+    function shouldComponentUpdate(nextProps){
+     
         if (nextProps.auth.isAuthenticated) {
       
             this.props.history.push("/imitationgram");
         }
-
         if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
+            setErrors(nextProps.errors);
         }
         return false;
-    }
-    onChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value });
-    }
+    };
 
-    onSubmit = async (event) => {
+    function onChange (event) {
+        if(event.target.name === "password"){
+            console.log(event.target.value);
+            setPassword(event.target.value);
+        }else if(event.target.name === "email"){
+            console.log(event.target.value);
+            setEmail(event.target.value);
+        }
+    };
+
+    async function onSubmit(event){
         event.preventDefault();
+        console.log(email)
         const userData = {
-            email: this.state.email,
-            password: this.state.password
+            email,
+            password
         };
-        this.props.loginUser(userData);
-       this.props.history.push("/imitationgram")
-    }
-    render() {
-        const { errors } = this.state
+        console.log(userData);
+        props.loginUser(userData);
+        props.history.push("/imitationgram")
+    };
         return (
-            <div style={{ height: "5vh" }} className="container valign-wrapper">
-                <Header /> 
-				 <form noValidate onSubmit={this.onSubmit}>
-				<div>
-				<label>
-					Email
-				</label>
-				<input onChange={this.onChange} error={errors.email} 
-				type="text"  
-				name="email" 
-				className={classnames("", {
-                    invalid: errors.email || errors.emailnotfound
-                  })}
-				/>
-				 <span className="red-text">
-                  {errors.email}
-                  {errors.emailnotfound}
-                </span>
-				</div>
-				<div>
-				<label>
-					Password
-				</label>
-				<input 
-				onChange={this.onChange} 
-				error={errors.password} 
-				type="text"  
-				name="password" 
-				className={classnames("", {
-                    invalid: errors.password || errors.passwordincorrect
-                  })}
-				/>
-				 <span className="red-text">
-                  {errors.password}
-                  {errors.passwordincorrect}
-                </span>
-				</div>
-				<div>
-				</div>
-				<div>
-					<button type='submit'>Login</button>
-				</div>
+            <div  className="container">
+               
+				<form className='form-signin' noValidate onSubmit={onSubmit}>
+                    <div>
+                    <label>
+                        Email 
+                    </label>
+                    <br/>
+                    <input onChange={onChange} error={errors.email} 
+                    type="text"  
+                    name="email" 
+                    className={classnames("input-text-user-imiatation", {
+                        invalid: errors.email || errors.emailnotfound
+                    })}
+                    />
+                    <span className="red-text">
+                    {errors.email}
+                    {errors.emailnotfound}
+                    </span>
+                    </div>
+                    <div>
+                    <label>
+                        Password 
+                    </label>
+                    <br/>
+                    <input 
+                    onChange={onChange} 
+                    error={errors.password} 
+                    type="password"
+                    name="password" 
+                    className={classnames("input-text-user-imiatation", {
+                        invalid: errors.password || errors.passwordincorrect
+                    })}
+                    />
+                    <span className="red-text">
+                    {errors.password}
+                    {errors.passwordincorrect}
+                    </span>
+                    </div>
+                    <div>
+                    </div>
+                        <button className="from-btn-imitation" type='submit' onSubmit={onSubmit} >Login</button>
+                    <p>Pas de compte ? <Link to="/signup" >Créer un compte</Link></p>
 				</form>
-				<p>Pas de compte ? <Link to="/signup" >Créer un compte</Link></p>
+				
 			</div>
         );
-    }
-}
+});
 
 Signin.propTypes = {
     loginUser: PropTypes.func.isRequired,

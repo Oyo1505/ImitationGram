@@ -17,15 +17,6 @@ class Signup extends React.Component {
             errors: {},
         }
     }
-    /*shouldComponentUpdate (nextProps){
-    	if(nextProps.errors){
-    		this.setState({
-    			errors : nextProps.errors
-    		});
-    		return true;
-    	}
-    	return false;
-    }*/
 
     componentDidMount() {
         // If logged in and user navigates to Register page, should redirect them to dashboard
@@ -57,68 +48,72 @@ class Signup extends React.Component {
 
         const { errors } = this.state;
         return (
-            <div style={{ height: "5vh" }} className="container valign-wrapper">
+            <div className="container valign-wrapper">
             <Header /> 
-				 <form noValidate onSubmit={this.onSubmit}>
-				<div>
-				<label>
-					Pseudo
-				</label>
-				<input onChange={this.onChange} 
-				type="text"  
-				name="name" 
-				value={this.state.name}
-				 className={classnames("", {
-                    invalid: errors.name
-                  })}
-				/>
-				<span className="red-text">{errors.name}</span>
-				</div>
-				<div>
-				<label>
-					Email
-				</label>
-				<input onChange={this.onChange} 
-				type="text"  
-				name="email"
-				value={this.state.email} 
-				 className={classnames("", {
-                    invalid: errors.email
-                  })}
-				/>
-				<span className="red-text">{errors.email}</span>
-				</div>
-				<div>
-				<label>
-					Password
-				</label>
-				<input onChange={this.onChange} 
-				type="text"  
-				name="password"
-				value={this.state.password} 
-				className={classnames("", {
-                    invalid: errors.password
-                  })}
-				/>
-				<span className="red-text">{errors.password}</span>
-				</div>
-				<div>
-				<label>
-					Confirmer	Password
-				</label>
-				<input onChange={this.onChange} 
-				type="text"  
-				name="password2" 
-				value={this.state.password2} 
-				className={classnames("", {
-                    invalid: errors.password2
-                  })}
-				/>
-					<span className="red-text">{errors.password2}</span>
-				</div>
-				<div>
-					<button onClick={this.onSubmit} type="button">Signup</button>
-				</div>
+				<form className='form-signin' noValidate onSubmit={this.onSubmit}>
+					<div>
+					<label>
+						Pseudo
+					</label>
+					<br/>
+					<input onChange={this.onChange} 
+					type="text"  
+					name="name" 
+					value={this.state.name}
+					className={classnames("", {
+						invalid: errors.name
+					})}
+					/>
+					<span className="red-text">{errors.name}</span>
+					</div>
+					<div>
+					<label>
+						Email
+					</label>
+					<br/>
+					<input onChange={this.onChange} 
+					type="text"  
+					name="email"
+					value={this.state.email} 
+					className={classnames("input-text-user-imiatation", {
+						invalid: errors.email
+					})}
+					/>
+					<span className="red-text">{errors.email}</span>
+					</div>
+					<div>
+					<label>
+						Password
+					</label>
+					<br/>
+					<input onChange={this.onChange} 
+					type="password"
+					name="password"
+					value={this.state.password} 
+					className={classnames("input-text-user-imiatation", {
+						invalid: errors.password
+					})}
+					/>
+					<span className="red-text">{errors.password}</span>
+					</div>
+					<div>
+					<label>
+						Confirmer	Password
+					</label>
+					<br/>
+					<input onChange={this.onChange} 
+					type="password"  
+					name="password2" 
+					value={this.state.password2} 
+					className={classnames("input-text-user-imiatation", {
+						invalid: errors.password2
+					})}
+					/>
+						<span className="red-text">{errors.password2}</span>
+					</div>
+					<div>
+						<button className="from-btn-imitation" onClick={this.onSubmit} type="button">Signup</button>
+					</div>
 				</form>
 
 
