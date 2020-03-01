@@ -72,7 +72,6 @@ const mapStateToProps = (state, ownProps) => {
         "email": "",
         "images_id": [],
     };
-    console.log(ownProps)
     const userId = ownProps.match.params.id;
     const users = state.users;
     if (userId && state.users.length > 0) {

@@ -11,7 +11,7 @@ const ListImages =({images}) =>  (
 			
 			return <ImageItem key={image._id} image={image} />;
 		})
-			: "No Pictures yet!"}
+			: " No Pictures yet !"}
 		</ul>
 	</div>
 

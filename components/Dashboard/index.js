@@ -27,9 +27,7 @@ import { connect } from 'react-redux';
 
 
 Dashboard.propTypes = {
-    auth: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
-    users: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {

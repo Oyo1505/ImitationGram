@@ -1,6 +1,7 @@
 import React,{Fragment} from 'react';
 import { withRouter } from "react-router-dom"
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 import loadingGif from '../../../../images/loading.gif';
 import {bindActionCreators} from 'redux';
 import {checkExtensionFile, getUserById } from '../../../../Utilities';
@@ -14,11 +15,10 @@ class AddImage extends React.Component {
 		this.state = {
 			image:this.props.image,
 			loading: false,
-			user:this.props.user
+			user:this.props.user,
+			images:this.props.images
 		}
 	}
-
-
 
 	uploadImage = async event => {
 		event.preventDefault();
@@ -36,20 +36,19 @@ class AddImage extends React.Component {
 				body:data,
 				
 			});
-		
+			
 			const file = await res.json();
 			this.setState({
 				image: {
 					url:file.secure_url,
 					user_id: this.props.auth.user._id,
 					likes:0,
-					name:file.public_id,
+					name :this.replacePublicIdImage(file.public_id),
 				},
 				loading:false
 			});
-
+			
 			this.props.actions.addImage(this.state.image);
-
 		}else{
 			//TODO MAKE A BETTER ALERT FOR WRONG FORMAT FILE
 			alert('wrong format must be .png .jpeg .jpg');
@@ -58,6 +57,13 @@ class AddImage extends React.Component {
 		
 		
 	} 
+	
+	replacePublicIdImage = (publicId) => {
+		if(publicId){
+			let newStr =	publicId.replace('imitationGram/', "");
+			return newStr;
+		}
+	}
 
 	render() {
 		const { loading, image} = this.state;
@@ -78,10 +84,12 @@ class AddImage extends React.Component {
 					)
 					: (
 					<Fragment>
-						<img src={image.url} alt="image-uploaded" /> 
+						<img className="image-upload" src={image.url} alt="image-uploaded" /> 
+						<br />
+						<Link to={`/dashboard/edit-image/${image.name}`}>Suivant</Link>
 					</Fragment>
+					
 					)
-				
 				}
 				</div>
 			</div>
@@ -104,7 +112,7 @@ const mapStateToProps = (state) => {
 	  "_id": "",
       "name": "",
       "email": "",
-       "images_id": [],
+      "images_id": [],
      };      
 
 	const userId = state.auth.user._id;
