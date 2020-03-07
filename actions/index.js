@@ -2,8 +2,9 @@ import * as types from './types'
 import axios from 'axios';
 import setAuthToken from "../Utilities/setAuthToken";
 import jwt_decode from "jwt-decode";
-
+import { customHistory } from '../index';
 /*USER */
+
 // LOAD users 
 
 export const loadUser = (userId) => {
@@ -112,7 +113,6 @@ export const deleteUserSuccess = userData =>  {
     };
 };
 
-
 /*IMAGE*/
 
 export const loadImagesSuccess = images => {
@@ -123,8 +123,7 @@ export const loadImagesSuccess = images => {
 export const loadAllImages = () => dispatch => {
     axios.get('http://localhost:5000/images/')
         .then(res => {
-          console.log(res.data)
-            dispatch(loadImagesSuccess(res.data))
+          dispatch(loadImagesSuccess(res.data))
         })
          .catch(err =>{throw(err)});
 
@@ -132,11 +131,14 @@ export const loadAllImages = () => dispatch => {
 
 
 export const addImage = imageData => dispatch => {
+
   axios.post(`http://localhost:5000/images/add-image`, imageData)
-  .then( res => {
+  .then( res => { 
     dispatch(addImageSuccess(imageData));
+      
+    customHistory.push(`/dashboard/edit-image/${imageData.name}`);
   })
-  .catch( err => throw(err));
+  .catch( err =>{ throw(err)});
 }
 
 export const addImageSuccess = imageData => {
@@ -146,23 +148,38 @@ export const addImageSuccess = imageData => {
   }
 }
 
+export const deleteImage = imageData => dispatch => {
+ 
+  axios.delete(`http://localhost:5000/images/${imageData}`, imageData)
+  .then( res => { 
+    dispatch(deleteImageSuccess(imageData));
+  })
+  .catch( err =>{ throw(err)});
+}
+
+export const deleteImageSuccess = imageData => {
+  return {
+    type: types.DELETE_IMAGE_SUCCESS,
+    payload: imageData
+  }
+}
+
+export const updateImage = imageData => dispatch => {
+  console.log(imageData)
+  axios.put(`http://localhost:5000/images/${imageData.name}`, imageData)
+  .then( res => { 
+    dispatch(deleteImageSuccess(imageData));
+  })
+  .catch( err =>{ throw(err)});
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const updateImageSuccess = imageData => {
+  return {
+    type: types.ADD_IMAGE_SUCCESS,
+    payload: imageData
+  }
+}
 /*USER*/
 /*
 export function createUser(user){

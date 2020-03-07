@@ -1,5 +1,5 @@
 import React,{Fragment} from 'react';
-import { withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import loadingGif from '../../../../images/loading.gif';
@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux';
 import {checkExtensionFile, getUserById } from '../../../../Utilities';
 import * as courseActions from "../../../../actions/";
 import  { connect } from 'react-redux';
- 
+const imagesLocaleStorage = [];
 class AddImage extends React.Component {
 
 	constructor(props) {
@@ -19,7 +19,11 @@ class AddImage extends React.Component {
 			images:this.props.images
 		}
 	}
-
+	componentDidMount= () =>{
+        /*set item to LocalStorage*/
+        const image = this.state.image;
+      	this.setImageToLocalStorage(image);
+	}
 	uploadImage = async event => {
 		event.preventDefault();
 		const files = event.target.files;
@@ -38,6 +42,7 @@ class AddImage extends React.Component {
 			});
 			
 			const file = await res.json();
+			
 			this.setState({
 				image: {
 					url:file.secure_url,
@@ -49,6 +54,7 @@ class AddImage extends React.Component {
 			});
 			
 			this.props.actions.addImage(this.state.image);
+
 		}else{
 			//TODO MAKE A BETTER ALERT FOR WRONG FORMAT FILE
 			alert('wrong format must be .png .jpeg .jpg');
@@ -57,16 +63,21 @@ class AddImage extends React.Component {
 		
 		
 	} 
-	
+	setImageToLocalStorage = (image) =>  {
+		imagesLocaleStorage.push(image);
+        const image_json = JSON.stringify(imagesLocaleStorage);
+        localStorage.setItem("imagesImitation", image_json)
+	}
 	replacePublicIdImage = (publicId) => {
 		if(publicId){
-			let newStr =	publicId.replace('imitationGram/', "");
+			let newStr = publicId.replace('imitationGram/', "");
 			return newStr;
 		}
 	}
 
 	render() {
 		const { loading, image} = this.state;
+	
 		return (
 			<div style={{ height: "5vh" }} className="container valign-wrapper" data-test="editUserComponent">
 			
@@ -86,7 +97,7 @@ class AddImage extends React.Component {
 					<Fragment>
 						<img className="image-upload" src={image.url} alt="image-uploaded" /> 
 						<br />
-						<Link to={`/dashboard/edit-image/${image.name}`}>Suivant</Link>
+						<Link  to={`/dashboard/edit-image/${image.name}`}>Suivant</Link>
 					</Fragment>
 					
 					)
@@ -117,18 +128,20 @@ const mapStateToProps = (state) => {
 
 	const userId = state.auth.user._id;
 	const users = state.users
+
 	if(userId && users.length > 0 ){
 		 user = getUserById(users, userId);
 	}
 	return{
 		auth:state.auth,
 		image:image,
+		images:state.images,
 		user: user
 
 	}
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {	
   return {
     actions: bindActionCreators(courseActions, dispatch)
   };

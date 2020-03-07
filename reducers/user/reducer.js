@@ -19,7 +19,7 @@ export default function userReducer(state = initialState.user, action) {
     case types.CREATE_USER_SUCCESS:
       return [
         ...state.user.filter(user => user.id !== action.payload._id),
-        Object.assign({}, action.user)
+        Object.assign({}, action.payload)
       ] 
     default: 
       return state;

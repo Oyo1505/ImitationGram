@@ -21,6 +21,21 @@ router.post('/add-image', (req, res) => {
 	newImage.save().then(image => res.json(image)).catch(err => console.log(err));
 
 })
+router.put('/:id', (req, res) => {
+	Image.find({name: req.params.id})
+	.then(image => {
+			image[0].url = req.body.url;
+			image[0].user_id= req.body.user_id;
+			image[0].likes = req.body.likes;
+			image[0].save()
+				  .then(user => res.json(user))
+				  .catch(err => res.status(400).json('Error: ' + err));
+	}).catch(err => res.status(400).json('Error: ' + err));
+  });
+router.delete('/:id', (req, res) => {
+	Image.findByIdAndDelete(req.params.id)
+	.then(image => res.json('Image Deleted'))
+	.catch(err => res.status(400).json('Error: ' + err));
 
-
+});
 module.exports = router;

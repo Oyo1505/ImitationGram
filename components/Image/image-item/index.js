@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { withRouter } from "react-router-dom"
 import { Link } from "react-router-dom";
 import { deleteImage } from "../../../../actions/";
 import { connect } from 'react-redux';
@@ -10,8 +11,8 @@ const ImageItem = (props) => {
         event.preventDefault();
 		setToggle(!toggle);
     }
-    function onClickDeleteImage(imageId){
-    	props.deleteImage(imageId);
+    async function onClickDeleteImage(imageId){
+		props.deleteImage(imageId);
 	}
 	
    return (
@@ -29,14 +30,14 @@ const ImageItem = (props) => {
 					
 					/>
 					<div className="overlay">
-						<div className="btn-overlay-image"><Link to={`dashboard/edit-image/${props.image.name}`}>Edit</Link></div>
 						<div className="btn-overlay-image" onClick={() => onClickDeleteImage(props.image._id)}> Delete </div>
 					</div>
 					
 				</div>	
 		</li>
+		
 
     );
 }
 
-export default connect(null, {deleteImage})(ImageItem);
+export default connect(null, {deleteImage})(withRouter(ImageItem));
