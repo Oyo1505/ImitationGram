@@ -7,6 +7,7 @@ export default function imagesReducers(state = initialState.images, action) {
 
 	switch(action.type){
 		case types.LOAD_IMAGES_SUCCESS:
+			console.log(action.payload)
 			return action.payload
 		case types.ADD_IMAGE_SUCCESS:
 			 return [
@@ -15,13 +16,13 @@ export default function imagesReducers(state = initialState.images, action) {
 		 ] 
 		case types.UPDATE_IMAGE_SUCCESS:
 			return [
-				...state.filter(image => image.id !== action.payload._id),
+				...state.filter(image => image.name !== action.payload.name),
 					Object.assign({}, action.payload)
 				 ] 
      	case types.DELETE_IMAGE_SUCCESS:
 			const newState = Object.assign([], state);
 			const indexOfImageToDelete = state.findIndex(image => {
-				return image.id == action.payload._id
+				return image._id === action.payload
 			})
 			newState.splice(indexOfImageToDelete, 1);	
 			return newState;
