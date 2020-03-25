@@ -165,10 +165,9 @@ export const deleteImageSuccess = imageData => {
 }
 
 export const updateImage = imageData => dispatch => {
-  console.log(imageData)
   axios.put(`http://localhost:5000/images/${imageData.name}`, imageData)
   .then( res => { 
-    dispatch(deleteImageSuccess(imageData));
+    dispatch(updateImageSuccess(imageData));
   })
   .catch( err =>{ throw(err)});
 }
@@ -176,7 +175,7 @@ export const updateImage = imageData => dispatch => {
 
 export const updateImageSuccess = imageData => {
   return {
-    type: types.ADD_IMAGE_SUCCESS,
+    type: types.UPDATE_IMAGE_SUCCESS,
     payload: imageData
   }
 }

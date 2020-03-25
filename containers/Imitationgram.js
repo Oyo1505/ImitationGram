@@ -1,11 +1,13 @@
-import React from 'react';
-import EditImage from '../components/EditImage';
+import React, { Fragment } from 'react';
+import Header from '../containers/Header';
+import ImitationGramApp from '../components/Imitation/';
 
 
 const Imitationgram = props => (
-
-    <EditImage />
-  )
+    <Fragment>
+   		 	<ImitationGramApp />
+  	</Fragment>
+)
 
 
 export default Imitationgram;
