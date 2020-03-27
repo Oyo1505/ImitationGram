@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const TextInput  = ({name, onChange, placeholder, value, label}) => {
-
+const RangeInput  = ({name, onChange, value, label, min, max}) => {
 	return (
 			<div className="form-group">
-				<label htmlFor={name}>{label}</label>
+				<label htmlFor={label}>{label}</label>
 				<div className="field">
 					<input 
 						style={{ width: '25%'}}
-						type="text"
+                        type="range"
+                        min={min}
+                        max={max}
 						name={name}
 						className="form-control"
-						placeholder={placeholder}
 						value={value}
 						onChange={onChange}
 					/>
@@ -21,10 +21,9 @@ const TextInput  = ({name, onChange, placeholder, value, label}) => {
 	
 }
 
-TextInput.propTypes = {
+RangeInput.propTypes = {
 	name: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
-	placeholder: PropTypes.string,
-	value: PropTypes.string
+    value: PropTypes.number,
 }
-export default  TextInput;
+export default  RangeInput;
