@@ -4,7 +4,7 @@ const TextInput  = ({name, onChange, placeholder, value, label}) => {
 
 	return (
 			<div className="form-group">
-				<label htmlFor={name}>{name}</label>
+				<label htmlFor={name}>{label}</label>
 				<div className="field">
 					<input 
 						style={{ width: '25%'}}

@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 const RangeInput  = ({name, onChange, value, label, min, max}) => {
-
 	return (
 			<div className="form-group">
-				<label htmlFor={name}>{name}</label>
+				<label htmlFor={label}>{label}</label>
 				<div className="field">
 					<input 
 						style={{ width: '25%'}}
@@ -26,6 +25,5 @@ RangeInput.propTypes = {
 	name: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
     value: PropTypes.number,
-  
 }
 export default  RangeInput;

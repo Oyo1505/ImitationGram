@@ -1,0 +1,29 @@
+
+.progress{
+	
+	display: none;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+	.progress {
+	  width: 100%;
+	  height: 10px;
+	 margin-top: 5px;
+	 margin-bottom: 20px;
+	position: relative;
+	display: block;
+	}
+
+} 
+
+
+@media only screen and (min-width: 1030px) {
+
+	// styles in 1030up.scss
+
+
+}
+
+

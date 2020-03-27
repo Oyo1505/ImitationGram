@@ -1,0 +1,99 @@
+*{box-sizing: border-box;}
+
+body{
+	width: 100%;
+	margin: 0 auto;
+	font-size: $base-px-default;
+	background-color: $white;
+	font-family: 'Roboto-Thin';
+	font-weight: 200;
+	color: #515151;
+	cursor: default;
+}
+html{
+	scroll-behavior: smooth;
+	font-size: 14px;
+}
+#section-content-cv > .pages-animated {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+h2{
+	font-size: 1.875em;
+	font-weight: bold;
+	line-height: 24px;
+	color: $grey;
+
+}
+input[type=text]{
+	width: 100%;
+}
+h1{
+	font-family: 'Raleway-regular';
+	font-size: 3.2rem;
+}
+
+
+h3{
+	font-size: 1.2rem;
+	font-weight: bold;
+	line-height: 24px;
+	color: $greyLight;
+	
+}
+
+li{
+	list-style: none;
+	color: $grey;
+}
+
+p{	 
+	font-size: 0.9rem;
+	font-family: 'Raleway-regular';
+}
+
+span{
+	font-size: 0.9em;
+}
+
+a{
+	color:$grey;
+	text-decoration: none; 
+	&:hover{
+		color: $bleu;
+		text-decoration: none;
+	}
+}
+section{
+	padding-bottom: 40px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+#cv-section{
+	display: flex;
+	flex-direction: row;
+	.disabled{
+		display: none;
+	}
+}
+.clear{clear:both;}
+
+@media only screen and (min-width: 768px) {
+	
+		h1{
+			font-size: 3.2rem;
+		}
+		h3{
+			font-size: 1.7rem;
+		}
+
+		p{
+			font-size: 1.2rem;
+			font-weight: 200;
+		}
+}

@@ -1,0 +1,19 @@
+[
+	{
+		"id" : "0",
+		"effect" : ""
+	},
+	{
+		"id" : "2",
+		"effect" : "oil_paint"
+	},
+	{
+		"id" : "3",
+		"effect" : "cartoonify"
+	},
+	{
+		"id" : "5",
+		"effect" : "vectorize"
+		
+	}
+ ]

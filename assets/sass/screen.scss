@@ -1,0 +1,62 @@
+@import "juice.scss";
+
+
+
+
+
+/*Variables*/
+@import "vars/color.scss";
+@import "vars/variables.scss";
+
+/*Layout*/
+@import "layout/layout.scss";
+
+
+
+/*BASE*/
+
+@import "base/base.scss";
+@import "base/form.scss"; 
+
+/*MIXINS*/
+@import "mixin/mixin.scss";
+
+/*fonts*/   
+@include fontface('Roboto-Thin', '../../fonts/Roboto-Thin', 400, thin, ttf);   
+@include fontface('Raleway-Bold', '../../fonts/Raleway-Bold', 400, bold, ttf);
+@include fontface('Raleway-regular', '../../fonts/Raleway-Regular', 400, normal, ttf);
+@include fontface('Raleway-extrabold', '../../fonts/Raleway-ExtraBold', 800, normal, ttf);
+@include fontface('Cinzel-Bold', '../../fonts/Cinzel-Bold', 400, bold, ttf);
+
+/*MODULE*/
+@import "modules/search-api.scss";
+@import "modules/header.scss";
+@import "modules/sound-box.scss";
+@import "modules/section.scss";
+@import "modules/icon.scss";
+@import "modules/nav-bar.scss";
+@import "modules/about.scss";
+@import "modules/skill.scss";
+@import "modules/progress-bar.scss";
+@import "modules/experience.scss";
+@import "modules/formation.scss";
+@import "modules/portfolio.scss";
+@import "modules/footer.scss";
+@import "modules/button.scss";
+@import "modules/contact.scss";
+@import "modules/twitch.scss";
+@import "modules/nav-aside.scss";
+/*@import "modules/sidenav.scss";*/
+@import "modules/trip.scss";
+@import "modules/drum.scss";
+@import "modules/imitation.scss";
+@import "modules/dj-youtube.scss";
+@import "modules/battlecard.scss";
+
+/*LightBox*/
+
+@import "modules/simplelightbox.scss";
+
+/*CSSGram*/
+
+@import "modules/cssgram/cssgram.scss";
