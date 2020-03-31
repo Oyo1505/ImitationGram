@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import ListImagesTimeline from "./list-images-timeline";
 
 class Timeline extends React.Component {
 
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
-			<div></div>
+			<Fragment>
+				<ListImagesTimeline  />
+			</Fragment>
 		);
 	}
 }
+
 export default Timeline;

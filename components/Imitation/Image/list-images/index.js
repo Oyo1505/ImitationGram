@@ -16,6 +16,7 @@ const ListImages =({images}) =>  (
 	</div>
 
 );
+
 const getImagesUser = (images, userId) => {
 	const arrayImage = Object.assign([], images.filter(image => image.user_id === userId ));
 	return arrayImage;

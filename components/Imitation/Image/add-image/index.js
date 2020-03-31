@@ -1,7 +1,6 @@
 import React,{Fragment} from 'react';
 import { withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
-import {Link} from "react-router-dom";
 import loadingGif from '../../../../images/loading.gif';
 import {bindActionCreators} from 'redux';
 import {checkExtensionFile, getUserById } from '../../../../Utilities';
@@ -91,13 +90,11 @@ class AddImage extends React.Component {
 				<br/>
 				{ loading ? (
 
-					<img src={loadingGif} alt="loading-gif"/>
+					<img src={loadingGif} />
 					)
 					: (
 					<Fragment>
-						<img className="image-upload" src={image.url} alt="image-uploaded" /> 
-						<br />
-						<Link  to={`/dashboard/edit-image/${image.name}`}>Suivant</Link>
+						<img className="image-upload" src={image.url} /> 
 					</Fragment>
 					
 					)

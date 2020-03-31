@@ -25,22 +25,18 @@ const Signin = React.memo((props) =>  {
 
     function onChange (event) {
         if(event.target.name === "password"){
-            console.log(event.target.value);
             setPassword(event.target.value);
         }else if(event.target.name === "email"){
-            console.log(event.target.value);
             setEmail(event.target.value);
         }
     };
 
     async function onSubmit(event){
         event.preventDefault();
-        console.log(email)
         const userData = {
             email,
             password
         };
-        console.log(userData);
         props.loginUser(userData);
         props.history.push("/imitationgram")
     };
