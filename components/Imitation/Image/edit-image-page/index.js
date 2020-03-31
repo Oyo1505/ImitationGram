@@ -6,7 +6,8 @@ import { SketchPicker } from 'react-color';
 import {Image, Transformation } from 'cloudinary-react';
 import { bindActionCreators } from 'redux';
 import filters from '../../../../json/filters';
-import imageEffects from '../../../../json/imageEffects'
+import imageEffects from '../../../../json/imageEffects';
+import colorEffects from '../../../../json/colorEffects';
 import sizePolice from '../../../../json/sizePolice'
 import RangeInput from '../../../common/RangeInput';
 import SelectInput from '../../../common/SelectInput';
@@ -24,7 +25,11 @@ class EditImagePage extends React.Component {
             filterEffect:'',
             imageEffects:{
                 effect:'',
-                rangeEffect:0
+                rangeEffect:50
+            },
+            colorEffects:{
+                colorEffect:'',
+                rangeEffect:50
             },
             text:{
                 content:'',
@@ -56,7 +61,7 @@ class EditImagePage extends React.Component {
             radius:radiusValue
         });
     }
-    handleChangeColor = (color) => {
+    handleChangeColorText = (color) => {
         let newImage = this.copyTheCurrentObject(this.state.image);
         let copyStateText = this.copyTheCurrentObject(this.state.text);
         newImage.url = this.image.state.url;
@@ -67,7 +72,7 @@ class EditImagePage extends React.Component {
       };
     handleSelectFilter = (event) => {
         event.preventDefault();
-        let newImage = this.copyTheCurrentObject(this.state.image)
+        let newImage = this.copyTheCurrentObject(this.state.image);
         this.setState({
              image:newImage,
              filterEffect: event.target.value
@@ -85,10 +90,11 @@ class EditImagePage extends React.Component {
              text:copyStateText
          });
      }
+
      handleImageEffect = () => {
-          event.preventDefault();
+        event.preventDefault();
         let newImage = this.copyTheCurrentObject(this.state.image);
-        let copyStateImageEffect = this.copyTheCurrentObject(this.state.text);
+        let copyStateImageEffect = this.copyTheCurrentObject(this.state.imageEffects);
         newImage.url = this.image.state.url;
         copyStateImageEffect[event.target.name]=event.target.value;
         this.setState({
@@ -96,6 +102,19 @@ class EditImagePage extends React.Component {
             imageEffects:copyStateImageEffect
         });
      }
+
+     handleColorEffect = () => {
+        event.preventDefault();
+        let newImage = this.copyTheCurrentObject(this.state.image);
+        let copyStateColorEffect = this.copyTheCurrentObject(this.state.colorEffects);
+        newImage.url = this.image.state.url;
+        copyStateColorEffect[event.target.name]=event.target.value;
+        this.setState({
+            image:newImage,
+            colorEffects:copyStateColorEffect
+        });
+     }
+
      onSubmit = (event) => {
         event.preventDefault();
         let newImage = this.copyTheCurrentObject(this.state.image);
@@ -135,19 +154,53 @@ class EditImagePage extends React.Component {
                         gravity={this.state.text.gravity}  
                         crop="fit"/>
                     } 
-                     {this.state.imageEffects.effect && 
-                     <Transformation effect={`${this.state.imageEffects.effect}`} />
+
+                    {this.state.imageEffects.effect && 
+                     <Transformation effect={`${this.state.imageEffects.effect}:${this.state.imageEffects.rangeEffect}`} />
+                     }
+                    {this.state.colorEffects.colorEffect && 
+                     <Transformation effect={`${this.state.colorEffects.colorEffect}:${this.state.colorEffects.rangeEffect}`} />
                      }
                     {this.state.filterEffect &&
                     <Transformation effect={`art:${this.state.filterEffect}`} />
                     }
+
                 </Image>
                 </div>
+                
                 <RangeInput label="Border radius" min="0" max="50" value={this.state.radius} name="radius" onChange={this.handleRangeRadius}  />
-
+                
+                <SelectInput label="Color Effect" name="colorEffect"  values={colorEffects} title="colorEffect" onChange={this.handleColorEffect} />   
+                {this.state.colorEffects.colorEffect && 
+                     <Spring
+                     config={config.molasses}
+                     from={{ opacity: 0 }}
+                     to={{ opacity: 1 }}
+                     >
+                     {props => (
+                          <Fragment>
+                         <div style={props} >
+                            <RangeInput label="Color range"  min="0" max="100" value={this.state.colorEffects.rangeEffect} name="rangeEffect" onChange={this.handleColorEffect} />
+                         </div>
+                        </Fragment>
+                        )}
+                    </Spring>    
+                }
                 <SelectInput label="Image Effect" name='effect'  values={imageEffects} title="effect" onChange={this.handleImageEffect} />
                 {this.state.imageEffects.effect && 
-                    <RangeInput  min="0" max="100" value={this.state.imageEffects.rangeEffect} name="rangeEffect" onChange={this.handleImageEffect}  />
+                     <Spring
+                     config={config.molasses}
+                     from={{ opacity: 0 }}
+                     to={{ opacity: 1 }}
+                     >
+                     {props => (
+                          <Fragment>
+                         <div style={props} >
+                            <RangeInput label="Image range"  min="0" max="100" value={this.state.imageEffects.rangeEffect} name="rangeEffect" onChange={this.handleImageEffect} />
+                         </div>
+                        </Fragment>
+                        )}
+                    </Spring>    
                 }
                 <SelectInput label="Filter"  name='select' values={filters} title="filter" onChange={this.handleSelectFilter} />
                 <TextInput label="Text" name='content' placeholder="Votre texte" value={this.state.text.content} onChange={this.handleTextInput} />
@@ -165,7 +218,7 @@ class EditImagePage extends React.Component {
                         <SelectInput label="Police weight" name='fontWeight'  values={fontWeights} title="weight" onChange={this.handleTextInput} />
                         <SelectInput label="Text Decoration" name='textDecoration'  values={textDecorations} title="textDecoration" onChange={this.handleTextInput} />  
                         <SelectInput label="Position" name='gravity'  values={positions} title="gravity" onChange={this.handleTextInput} />  
-                        <SketchPicker color={ this.state.text.color }  onChange={ this.handleChangeColor } />
+                        <SketchPicker color={ this.state.text.color }  onChange={ this.handleChangeColorText } />
                         </div>
                         </Fragment>
                     )}
