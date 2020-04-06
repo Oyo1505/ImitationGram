@@ -21,7 +21,6 @@ class EditImagePage extends React.Component {
         super(props);
         this.state = {
             image: this.props.image,
-            radius: 0,
             filterEffect:'',
             imageEffects:{
                 effect:'',
@@ -52,15 +51,6 @@ class EditImagePage extends React.Component {
         return cloneImage;
     }
 
-    handleRangeRadius = (event) => {
-       event.preventDefault();
-       let newImage = this.copyTheCurrentObject(this.state.image)
-       let radiusValue = parseInt(event.target.value, 10)
-       this.setState({
-            image:newImage,
-            radius:radiusValue
-        });
-    }
     handleChangeColorText = (color) => {
         let newImage = this.copyTheCurrentObject(this.state.image);
         let copyStateText = this.copyTheCurrentObject(this.state.text);
@@ -141,7 +131,6 @@ class EditImagePage extends React.Component {
                 
                 >
                    <Transformation width="500" quality="100" />
-                   <Transformation radius={this.state.radius} />
                    {this.state.text.content &&
                     <Transformation width="500"  
                         overlay={{fontFamily: "Arial", 
@@ -167,8 +156,6 @@ class EditImagePage extends React.Component {
 
                 </Image>
                 </div>
-                
-                <RangeInput label="Border radius" min="0" max="50" value={this.state.radius} name="radius" onChange={this.handleRangeRadius}  />
                 
                 <SelectInput label="Color Effect" name="colorEffect"  values={colorEffects} title="colorEffect" onChange={this.handleColorEffect} />   
                 {this.state.colorEffects.colorEffect && 

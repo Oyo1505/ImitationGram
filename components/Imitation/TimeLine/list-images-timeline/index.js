@@ -4,14 +4,12 @@ import { connect } from 'react-redux';
 
 const ListImagesTimeline =({images}) =>  (
 	<div>
-	<ul className="list-images-user">
 	{ images && images.length 
 		? images.map(image => {
-			return <ImageItemTimeline />;
+			return <ImageItemTimeline image={image} key={image._id} />;
 	})
 		: " No Pictures yet !"}
-	</ul>
-</div>
+	</div>
 	
 );
 const mapStateToProps = (state) => {

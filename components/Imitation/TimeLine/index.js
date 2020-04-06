@@ -5,9 +5,9 @@ class Timeline extends React.Component {
 
 	render() {
 		return (
-			<Fragment>
+			<div className="timeline" >
 				<ListImagesTimeline  />
-			</Fragment>
+			</div>
 		);
 	}
 }
