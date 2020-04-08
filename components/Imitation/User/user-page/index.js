@@ -11,22 +11,24 @@ import Header from '../../Header/';
 				}
 	}
 	render() {
-		
 		const { user, auth, userIdPage} = this.props;
 		return (
-
 			<div style={{ height: "5vh" }} className="container valign-wrapper">
 			<Header  /> 
 			<div className="row">
-			
-			  <div className="col s12 center-align">
+			  <div className="col s12 center-align">  
+			  <header className="header-profile-imitation">
 			  <h1>{user.name}</h1>
-				{this.checkUserbyIdOnUserPage(auth.user._id, userIdPage)  &&
+			  {this.checkUserbyIdOnUserPage(auth.user._id, userIdPage)  &&
 				<>
-					<p><Link to={`/edit/${this.props.auth.user._id}`}>Edit Your Profil</Link></p>
-					<Link to={`/add/`}><button> Upload an image</button></Link>
+					<button className="btn-imt btn-edit-profil"><Link to={`/edit/${this.props.auth.user._id}`}>Edit Your Profil</Link></button>
+					<button className="btn-imt btn-edit-profil"><Link to={`/add/`}> Upload an image </Link></button>
 				</>
+				}{!this.checkUserbyIdOnUserPage(auth.user._id, userIdPage)  &&
+					<button className="btn-imt btn-follow">Follow</button>
 				}
+			  </header>
+				
 	            <section>
 	            	<ListImages userId={userIdPage}/>
 	            </section>
