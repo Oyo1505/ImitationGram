@@ -16,7 +16,6 @@ import { connect } from 'react-redux';
         <Header  /> 
         <div className="row">
           <div className="col s12 center-align">
-                <b>Hey there {this.props.user.name},</b> 
                 <UserPage user={this.props.user} />
           </div>
         </div>

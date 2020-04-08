@@ -1,4 +1,5 @@
 import React, { Fragment, useState, set } from 'react';
+import { Link } from 'react-router-dom';
 import  default_user from '../../../../images/default_user.png'
 import  {connect } from 'react-redux';
 
@@ -17,7 +18,8 @@ class ImageHeaderTimeline extends React.Component {
                 <img src={default_user} alt="image-default-user" />
             </div>
             <div className="username-thumb-image-timeline">
-              {this.state.user.name}
+                <Link to={`/user/${this.state.user._id}`}>{this.state.user.name}</Link>
+              
             </div>
             <div></div>
         </header>
@@ -37,7 +39,7 @@ const mapStateToProps = (state, ownProps) => {
         "email": "",
         "images_id": [],
     };
-  
+   
     const userId = ownProps.userId;
     const users = state.users 
 
