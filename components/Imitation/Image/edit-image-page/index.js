@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
+import { withRouter } from 'react-router-dom';
 import Header from '../../Header';
 import {Spring, config} from 'react-spring/renderprops';
 import { SketchPicker } from 'react-color';
@@ -81,7 +82,7 @@ class EditImagePage extends React.Component {
          });
      }
 
-     handleImageEffect = () => {
+     handleImageEffect = (event) => {
         event.preventDefault();
         let newImage = this.copyTheCurrentObject(this.state.image);
         let copyStateImageEffect = this.copyTheCurrentObject(this.state.imageEffects);
@@ -93,7 +94,7 @@ class EditImagePage extends React.Component {
         });
      }
 
-     handleColorEffect = () => {
+     handleColorEffect = (event) => {
         event.preventDefault();
         let newImage = this.copyTheCurrentObject(this.state.image);
         let copyStateColorEffect = this.copyTheCurrentObject(this.state.colorEffects);
@@ -110,7 +111,7 @@ class EditImagePage extends React.Component {
         let newImage = this.copyTheCurrentObject(this.state.image);
         newImage.url = this.image.state.url;
         this.props.actions.updateImage(newImage);
-        
+        this.props.history.push('/imitationgram');
     }
     ref = image => {
         this.image = image
@@ -119,6 +120,7 @@ class EditImagePage extends React.Component {
         const fontWeights = [{"id": 0, weight:"normal" },{"id": 1, weight:"bold" },{"id": 2, weight:"thin" },{"id": 3, weight:"light" }];
         const textDecorations = [{"id": 0, textDecoration:"normal" },{"id": 1, textDecoration:"underline" },{"id": 2, textDecoration:"strikethrough" }];
         const positions = [{"id": 0, gravity:"center" },{"id": 1, gravity:"north" },{"id": 2, gravity:"west" },{"id": 2, gravity:"east"},{"id": 2, gravity:"south" }];
+        
         return (
             <Fragment>
             <div style={{ height: "5vh" }} className="container valign-wrapper" data-test="editImageComponent">
@@ -126,7 +128,7 @@ class EditImagePage extends React.Component {
                 <div>
                 <Image 
                 ref={this.ref}
-                cloudName={process.env.CLOUDINARY_NAME} 
+                cloudName={process.env.CLOUDINARY_NAME}
                 publicId={`imitationGram/${this.state.image.name}`}
                 
                 >
