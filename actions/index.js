@@ -3,12 +3,15 @@ import axios from 'axios';
 import setAuthToken from "../Utilities/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { customHistory } from '../index';
+
+const DOMAIN = process.env.DOMAIN
+
 /*USER */
 
 // LOAD users 
 
 export const loadUser = (userId) => {
-    axios.get(`http://localhost:5000/users/${userId}`)
+    axios.get(`https://evening-tor-18506.herokuapp.com/users/${userId}`)
         .then(response => {
             return response;
         })
@@ -22,7 +25,7 @@ export const loadUsersSuccess = users => {
 };
 
 export const loadAllUsers = () => dispatch => {
-    axios.get('http://localhost:5000/users/')
+    axios.get(`https://evening-tor-18506.herokuapp.com/users/`)
         .then(res => {
             dispatch(loadUsersSuccess(res.data))
         })
@@ -32,7 +35,7 @@ export const loadAllUsers = () => dispatch => {
 // Register User
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post("http://localhost:5000/users/register", userData)
+        .post(`https://evening-tor-18506.herokuapp.com/users/register`, userData)
         .then(res => history.push("/signin")) // re-direct to login on successful register
          .catch(err =>{throw(err)});
 
@@ -41,7 +44,7 @@ export const registerUser = (userData, history) => dispatch => {
 export const loginUser = userData => dispatch => {
 
     axios
-        .post("http://localhost:5000/users/login", userData)
+        .post(`https://evening-tor-18506.herokuapp.com/users/login`, userData)
         .then(res => {
             // Save to localStorage
             // Set token to localStorage
@@ -62,7 +65,7 @@ export const loginUser = userData => dispatch => {
 };
 
 export const editUser = userData => dispatch => {
-    axios.put(`http://localhost:5000/users/${userData._id}`, userData)
+    axios.put(`https://evening-tor-18506.herokuapp.com/users/${userData._id}`, userData)
         .then(res => {
             dispatch({
                 type: types.UPDATE_USER_SUCCESS,
@@ -98,8 +101,9 @@ export const logoutUser = () => dispatch => {
     dispatch(setCurrentUser({}));
 };
 
+/*DELETE USER*/ 
 export const deleteUser = userData => dispatch =>{
-  axios.delete(`http://localhost:5000/users/${userData._id}`, userData)
+  axios.delete(`https://evening-tor-18506.herokuapp.com/users/${userData._id}`, userData)
     .then( res =>{
         dispatch(deleteUserSuccess(userData));
     })
@@ -113,6 +117,8 @@ export const deleteUserSuccess = userData =>  {
     };
 };
 
+
+
 /*IMAGE*/
 
 export const loadImagesSuccess = images => {
@@ -121,7 +127,7 @@ export const loadImagesSuccess = images => {
 };
 
 export const loadAllImages = () => dispatch => {
-    axios.get('http://localhost:5000/images/')
+    axios.get(`https://evening-tor-18506.herokuapp.com/images/`)
         .then(res => {
           dispatch(loadImagesSuccess(res.data))
         })
@@ -132,11 +138,11 @@ export const loadAllImages = () => dispatch => {
 
 export const addImage = imageData => dispatch => {
 
-  axios.post(`http://localhost:5000/images/add-image`, imageData)
+  axios.post(`https://evening-tor-18506.herokuapp.com/images/add-image`, imageData)
   .then( res => { 
     dispatch(addImageSuccess(imageData));
       
-    customHistory.push(`/dashboard/edit-image/${imageData.name}`);
+    customHistory.push(`/edit-image/${imageData.name}`);
   })
   .catch( err =>{ throw(err)});
 }
@@ -150,7 +156,7 @@ export const addImageSuccess = imageData => {
 
 export const deleteImage = imageData => dispatch => {
  
-  axios.delete(`http://localhost:5000/images/${imageData}`, imageData)
+  axios.delete(`https://evening-tor-18506.herokuapp.com/images/${imageData}`, imageData)
   .then( res => { 
     dispatch(deleteImageSuccess(imageData));
   })
@@ -165,7 +171,7 @@ export const deleteImageSuccess = imageData => {
 }
 
 export const updateImage = imageData => dispatch => {
-  axios.put(`http://localhost:5000/images/${imageData.name}`, imageData)
+  axios.put(`https://evening-tor-18506.herokuapp.com/images/${imageData.name}`, imageData)
   .then( res => { 
     dispatch(updateImageSuccess(imageData));
   })

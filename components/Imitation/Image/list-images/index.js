@@ -1,21 +1,23 @@
 import React, { Fragment } from 'react';
+import {sortedElementsByDateDesc} from '../../../../Utilities';
 import { connect } from 'react-redux';
 import ImageItem from '../image-item/';
 
-const ListImages =({images}) =>  (
-
+const ListImages =({images}) =>  {
+	const sortedImagesByDate = sortedElementsByDateDesc(images);
+	return (
 	<div>
 		<ul className="list-images-user">
-		{ images && images.length 
-			? images.map(image => {
+		{ sortedImagesByDate && sortedImagesByDate.length 
+			? sortedImagesByDate.map(image => {
 			
 			return <ImageItem key={image._id} image={image} />;
-		})
+			})
 			: " No Pictures yet !"}
 		</ul>
 	</div>
 
-);
+)};
 
 const getImagesUser = (images, userId) => {
 	const arrayImage = Object.assign([], images.filter(image => image.user_id === userId ));

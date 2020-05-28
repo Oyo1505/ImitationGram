@@ -6,7 +6,9 @@ import {bindActionCreators} from 'redux';
 import {checkExtensionFile, getUserById } from '../../../../Utilities';
 import * as courseActions from "../../../../actions/";
 import  { connect } from 'react-redux';
+
 const imagesLocaleStorage = [];
+
 class AddImage extends React.Component {
 
 	constructor(props) {

@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import { connect } from 'react-redux';
+import FollowButton from '../follow-button';
 import ListImages from '../../Image/list-images';
 import { Link } from 'react-router-dom';
 import Header from '../../Header/';
@@ -25,7 +26,7 @@ import Header from '../../Header/';
 					<button className="btn-imt btn-edit-profil"><Link to={`/add/`}> Upload an image </Link></button>
 				</>
 				}{!this.checkUserbyIdOnUserPage(auth.user._id, userIdPage)  &&
-					<button className="btn-imt btn-follow">Follow</button>
+					<FollowButton userId={user._id}  />
 				}
 			  </header>
 				

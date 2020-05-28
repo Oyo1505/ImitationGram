@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
-import { withRouter } from 'react-router-dom';
 import Header from '../../Header';
 import {Spring, config} from 'react-spring/renderprops';
 import { SketchPicker } from 'react-color';
@@ -128,7 +127,7 @@ class EditImagePage extends React.Component {
                 <div>
                 <Image 
                 ref={this.ref}
-                cloudName={process.env.CLOUDINARY_NAME}
+                cloudName={`${process.env.CLOUDINARY_NAME}`}
                 publicId={`imitationGram/${this.state.image.name}`}
                 
                 >

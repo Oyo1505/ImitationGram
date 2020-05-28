@@ -1,5 +1,6 @@
 import React, { Fragment, useState, set } from 'react';
 import PropTypes from "prop-types";
+import LikeButtonImage from "../../Image/like-button-image";
 import { useSpring, animated, config, interpolate } from 'react-spring';
 import ImageHeaderTimeline from '../image-header-timeline';
 
@@ -51,6 +52,7 @@ const ImageItemTimeline = (item) => {
 					</div>
 					
 					<div>
+						<LikeButtonImage imageId={item.image._id} />
 						comments
 					</div>
 			</animated.div>	
