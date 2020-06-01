@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import { connect } from 'react-redux';
+import {getUserById} from '../../../../Utilities';
 import FollowButton from '../follow-button';
 import ListImages from '../../Image/list-images';
 import { Link } from 'react-router-dom';
@@ -40,10 +41,7 @@ import Header from '../../Header/';
 	}
 }
 
-const getUserbyId = (users, userId) => {
-	const user = Object.assign({}, users.find(user => user._id === userId ));
-	return user;
-}
+
 const  mapStateToProps = (state, ownProps ) =>  {
 	let user = {    "_id": "",
                     "name": "",
@@ -54,7 +52,7 @@ const  mapStateToProps = (state, ownProps ) =>  {
 	let userId = ownProps.match.params.id;
 	if(userId && users.length > 0){
 
-		user = getUserbyId(users, userId)
+		user = getUserById(users, userId)
 	}
 	return {
 		auth: state.auth,

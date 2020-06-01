@@ -12,10 +12,21 @@ const FollowButton = (props) => {
         let cloneImage = Object.assign({},object);
         return cloneImage;
     }
+    function checkIdFollowerInUserFollowersIdArraay(arrayFollower,id){
+
+       return arrayFollower.followers_id.includes(id)
+    }
     function addIdFollower (id){
        let userCopy = copyTheCurrentObject(user);
-       userCopy.followers_id.push(id);
-       return userCopy
+     if(!userCopy.followers_id.includes(id)){
+        userCopy.followers_id.push(id)
+        console.log('existepas ', id);
+        return userCopy;
+    }else{
+      
+        console.log('existe', id);
+        return userCopy; 
+    }
     }
     function submitToAddFollower(event){
         event.preventDefault();
@@ -24,10 +35,21 @@ const FollowButton = (props) => {
         props.actions.editUser(user);
     }
     return(
-        <button className="btn-imt btn-follow" onClick={submitToAddFollower}>Follow</button>
+        <>
+        {user.followers_id.includes(props.userIdFromUserPage) &&
+            <button className="btn-imt btn-followed" onClick={submitToAddFollower}>Followed</button>
+        }
+        {!user.followers_id.includes(props.userIdFromUserPage) &&
+            <button className="btn-imt btn-follow" onClick={submitToAddFollower}>Follow</button>
+        }
+        </>
     )
 }
 
+FollowButton.propTypes = {
+    user: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
+}
 
 function mapDispatchToProps(dispatch) {
     return {

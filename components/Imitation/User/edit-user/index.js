@@ -9,13 +9,10 @@ import { connect } from 'react-redux';
 class EditUser extends React.Component {
 
     constructor(props) {
-
         super(props);
-
         this.state = {
             user: this.props.user,
         }
-
     }
     onChangeValue = (event) => {
         event.preventDefault();
@@ -70,6 +67,7 @@ const mapStateToProps = (state, ownProps) => {
         "_id": "",
         "name": "",
         "email": "",
+        "followers_id":[],
         "images_id": [],
     };
     const userId = ownProps.match.params.id;
