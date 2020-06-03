@@ -34,6 +34,7 @@ const mapStateToProps = (state) => {
                     "name": "",
                     "email": "",
                     "followers_id":[],
+                    "suscribed_id":[],
                     "images_id": [],
                 };      
     const userId = state.auth.user._id;

@@ -68,6 +68,7 @@ const mapStateToProps = (state, ownProps) => {
         "name": "",
         "email": "",
         "followers_id":[],
+        "suscribed_id":[],
         "images_id": [],
     };
     const userId = ownProps.match.params.id;

@@ -6,6 +6,7 @@ const userSchema = new Schema({
 	name: {
 		type: String,
 		required:true,
+		unique: true
 		},
 	email:{
 		type: String,
@@ -27,7 +28,11 @@ const userSchema = new Schema({
 	followers_id:{
 		 type:  Array,
 		 required:false 
-	}
+	},
+	suscribed_id:{
+		type:  Array,
+		required:false 
+   }
 	
 });
 

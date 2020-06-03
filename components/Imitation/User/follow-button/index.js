@@ -12,35 +12,31 @@ const FollowButton = (props) => {
         let cloneImage = Object.assign({},object);
         return cloneImage;
     }
-    function checkIdFollowerInUserFollowersIdArraay(arrayFollower,id){
 
-       return arrayFollower.followers_id.includes(id)
-    }
-    function addIdFollower (id){
-       let userCopy = copyTheCurrentObject(user);
-     if(!userCopy.followers_id.includes(id)){
-        userCopy.followers_id.push(id)
-        console.log('existepas ', id);
-        return userCopy;
-    }else{
-      
-        console.log('existe', id);
-        return userCopy; 
-    }
+    function actionOnSuscribedArray (id){
+        let userCopy = copyTheCurrentObject(user);
+        if(!userCopy.suscribed_id.includes(id)){
+            userCopy.suscribed_id.push(id)
+            return userCopy;
+        }else if(userCopy.suscribed_id.includes(id)){
+            let indexSuscribed = userCopy.suscribed_id.findIndex(index => index === id);
+            userCopy.suscribed_id.splice(indexSuscribed, 1 );
+            return userCopy; 
+        }
     }
     function submitToAddFollower(event){
         event.preventDefault();
-        let userCopy = addIdFollower(props.userIdFromUserPage);
+        let userCopy = actionOnSuscribedArray(props.userIdFromUserPage);
         setUser(userCopy);
         props.actions.editUser(user);
     }
     return(
         <>
-        {user.followers_id.includes(props.userIdFromUserPage) &&
-            <button className="btn-imt btn-followed" onClick={submitToAddFollower}>Followed</button>
+        {user.suscribed_id.includes(props.userIdFromUserPage) &&
+            <button className="btn-followed" style={{width: '100px'}} onClick={submitToAddFollower}>Followed</button>
         }
-        {!user.followers_id.includes(props.userIdFromUserPage) &&
-            <button className="btn-imt btn-follow" onClick={submitToAddFollower}>Follow</button>
+        {!user.suscribed_id.includes(props.userIdFromUserPage) &&
+            <button className="btn-follow" style={{width: '100px'}} onClick={submitToAddFollower}>Follow</button>
         }
         </>
     )
@@ -62,6 +58,7 @@ const mapStateToProps = (state, ownProps) => {
                     "name": "",
                     "email": "",
                     "followers_id":[],
+                    "suscribed_id":[],
                     "images_id": [],
                 };
     
@@ -71,7 +68,7 @@ const mapStateToProps = (state, ownProps) => {
     if(userId && state.users.length > 0){
          user = getUserById(users, userId);
     }            
-   
+ 
     return {
         userIdFromUserPage,
         user
