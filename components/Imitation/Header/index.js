@@ -35,6 +35,7 @@ render() {
 			<StyledHeader>
 				<div className="nav-bar-header">
 					<Link to="/imitationgram">Accueil</Link>
+					<Link to="/discover">Discover</Link>
 					{isAuthenticated &&
 						<Fragment>
 							<Link to={`/user/${this.props.auth.user._id}`}>Dashboard</Link>
