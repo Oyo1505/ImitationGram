@@ -48,7 +48,7 @@ const ImageItemTimeline = (item) => {
 					<ImageHeaderTimeline userId={item.image.user_id} />
 					<div className="image-content-timeline" >
 						<img  src={item.image.url}  
-					alt={item.image.name} />
+						alt={item.image.name} />
 					</div>
 					
 					<div>

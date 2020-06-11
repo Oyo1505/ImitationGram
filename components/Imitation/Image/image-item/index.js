@@ -1,12 +1,17 @@
-import React, { Fragment, useState } from 'react';
+import React, {useState } from 'react';
 import { withRouter } from "react-router-dom"
+import ModalImage from '../modal-image';
 import { Link } from "react-router-dom";
 import { deleteImage } from "../../../../actions/";
 import { connect } from 'react-redux';
 
-const ImageItem = (props) => {
-    const [toggle, setToggle] = useState(false);
 
+const ImageItem = (props) => {
+	const [toggle, setToggle] = useState(false);
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+  
     function onMouseOverImage(event) {
         event.preventDefault();
 		setToggle(!toggle);
@@ -22,10 +27,10 @@ const ImageItem = (props) => {
 		}
 	}
    return (
-        <li   key={props.image._id}	>
-				<div className="thumbnail-image"
-				onMouseOver={(event) => onMouseOverImage(event)}
-				onMouseLeave={(event) => onMouseOverImage(event)}
+        <li   key={props.image._id} >
+				<div 
+				className="thumbnail-image"
+				onClick={() => setShow(true)}
 				>
 					<img src={props.image.url}  
 					alt={props.image.name} 
@@ -37,11 +42,10 @@ const ImageItem = (props) => {
 							<div className="btn-overlay-image" onClick={() => onClickDeleteImage(props.image._id)}> Delete </div>
 						</>
 						}
-						{!getUserbyId(props.match.params.id, props.auth.user._id) &&
-							<div className="btn-overlay-image"> Voir </div>
-						}
 					</div>				
 				</div>	
+				
+				<ModalImage show={show} close={handleClose} image={props.image} />
 		</li>
     );
 }

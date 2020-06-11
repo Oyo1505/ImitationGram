@@ -10,7 +10,6 @@ class Timeline extends React.Component {
 			<div className="timeline" >
 				<button onClick={this.refreshPage}>Click to reload!</button>
 				<ListImagesTimeline  />
-				
 			</div>
 		);
 	}

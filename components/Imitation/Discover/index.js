@@ -9,11 +9,11 @@ const Discover = () => {
 	
 		return (
             <div id="imitation-app">
-           	 <div style={{ height: "5vh" }} className="container valign-wrapper">
+           	 <div style={{ height: "5vh" }} className="container-imitation valign-wrapper">
                 <Header  />
-			    <div className="timeline" >
 				<button onClick={refreshPage}>Click to reload!</button>
-				<ListImagesDiscover  />
+			    <div className="explore" >
+					<ListImagesDiscover  />
 			    </div>
              </div>	
 			</div>

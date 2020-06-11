@@ -15,7 +15,7 @@ import Header from '../../Header/';
 	render() {
 		const { user, auth, userIdPage} = this.props;
 		return (
-			<div style={{ height: "5vh" }} className="container valign-wrapper">
+			<div style={{ height: "5vh" }} className="container-imitation valign-wrapper">
 			<Header  /> 
 			<div className="row">
 			  <div className="col s12 center-align">  
@@ -43,10 +43,7 @@ import Header from '../../Header/';
 					</div>	
 				</div>
 			  </header>
-				
-	            <section>
 	            	<ListImages userId={userIdPage}/>
-	            </section>
 				</div>
 			</div>
 		</div>

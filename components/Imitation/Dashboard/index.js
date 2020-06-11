@@ -11,16 +11,11 @@ import { connect } from 'react-redux';
     render() {
 
         return (
-
         <div style={{ height: "5vh" }} className="container valign-wrapper">
-        <Header  /> 
-        <div className="row">
-          <div className="col s12 center-align">
-                <UserPage user={this.props.user} />
-          </div>
+            <Header  /> 
+            <UserPage user={this.props.user} />
         </div>
-      </div>
-        );
+     );
     }
 }
 

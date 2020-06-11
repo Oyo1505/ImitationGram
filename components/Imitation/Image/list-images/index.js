@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {sortedElementsByDateDesc} from '../../../../Utilities';
 import { connect } from 'react-redux';
 import ImageItem from '../image-item/';
