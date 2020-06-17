@@ -115,11 +115,12 @@ class EditImagePage extends React.Component {
     ref = image => {
         this.image = image
     }
+   
 	render() {
         const fontWeights = [{"id": 0, weight:"normal" },{"id": 1, weight:"bold" },{"id": 2, weight:"thin" },{"id": 3, weight:"light" }];
         const textDecorations = [{"id": 0, textDecoration:"normal" },{"id": 1, textDecoration:"underline" },{"id": 2, textDecoration:"strikethrough" }];
         const positions = [{"id": 0, gravity:"center" },{"id": 1, gravity:"north" },{"id": 2, gravity:"west" },{"id": 2, gravity:"east"},{"id": 2, gravity:"south" }];
-        
+        console.log( typeof(this.state.image.likes))
         return (
             <Fragment>
             <div style={{ height: "5vh" }} className="container valign-wrapper" data-test="editImageComponent">
@@ -239,10 +240,10 @@ const getImageByPublicId = (images, imageId) => {
 
 const mapStateToProps = (state, ownProps) => {
     let image = {
-		"_id":"",
+        "_id":"",
 		"url":"",
 		"user_id":"", 
-		"likes":"",
+		"likes":[],
 		"name":"",
 	};
     const imageId = ownProps.match.params.id;

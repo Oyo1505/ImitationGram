@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import LikeButton from '../like-button-image';
 import { getUserById } from '../../../../Utilities';
 import  default_user from '../../../../images/default_user.png';
 import { Modal } from 'react-bootstrap';
@@ -8,7 +9,6 @@ import PropTypes from "prop-types";
 
 
 const ModalImage = (props) => {
-    const [show , setShow] = useState(false);
     const handleClose = () => {
       props.close(false);
     };
@@ -40,7 +40,7 @@ const ModalImage = (props) => {
               <img style={{width : "100%", maxHeight: '500px'}}  src={props.image.url} />
             </Modal.Body>
             <Modal.Footer>
-              <p>{props.image.likes}</p>
+              <LikeButton imageId={props.image._id} />
               <p>comments</p>
             </Modal.Footer>
           </Modal>
@@ -50,7 +50,8 @@ const ModalImage = (props) => {
 }
  
 ModalImage.propTypes = {
-    image : PropTypes.object.isRequired
+    image : PropTypes.object.isRequired,
+    user : PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {

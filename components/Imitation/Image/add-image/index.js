@@ -48,7 +48,7 @@ class AddImage extends React.Component {
 				image: {
 					url:file.secure_url,
 					user_id: this.props.auth.user._id,
-					likes:0,
+					likes:[],
 					name :this.replacePublicIdImage(file.public_id),
 				},
 				loading:false
@@ -114,9 +114,10 @@ AddImage.propTypes = {
 const mapStateToProps = (state) => {
 	let image = {
 		'_id':"",
+		"url": "",
 		'name':"",
 		'user_id':"",
-		'likes':0,
+		'likes':[],
 	}
 	let user = {  
 	  "_id": "",

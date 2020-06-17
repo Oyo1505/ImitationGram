@@ -9,8 +9,8 @@ const FollowButton = (props) => {
    const [user, setUser] = useState(props.user);
  
    function copyTheCurrentObject (object) {
-        let cloneImage = Object.assign({},object);
-        return cloneImage;
+        let cloneObject = Object.assign({},object);
+        return cloneObject;
     }
 
     function actionOnSuscribedArray (id){
