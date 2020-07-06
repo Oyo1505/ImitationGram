@@ -1,6 +1,7 @@
 import React, { Fragment, useState, set } from 'react';
 import PropTypes from "prop-types";
 import LikeButtonImage from "../../Image/like-button-image";
+import CommentsImage from "../../Image/comments-image";
 import { useSpring, animated, config, interpolate } from 'react-spring';
 import ImageHeaderTimeline from '../image-header-timeline';
 
@@ -19,7 +20,7 @@ const ImageItemTimeline = (item) => {
 		<animated.div 
 				style={{
 					width: '450px', 
-					height:'400px', 
+					height:'auto', 
 					borderRadius:'11px',
 					backgroundColor: '#f7f6f4',
 					margin: '25px 0',
@@ -50,11 +51,12 @@ const ImageItemTimeline = (item) => {
 						<img  src={item.image.url}  
 						alt={item.image.name} />
 					</div>
-					
-					<div>
-						<LikeButtonImage imageId={item.image._id} />
-						comments
+					<footer className="modal-footer"  >
+				    <LikeButtonImage imageId={item.image._id} />
+					<div class="comment-section">
+						<CommentsImage comments={item.image.comments} />
 					</div>
+					</footer>
 			</animated.div>	
 		</div>
     );

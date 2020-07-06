@@ -1,19 +1,21 @@
-import React, {Fragment} from 'react';
+import React, {useState} from 'react';
 import { connect } from 'react-redux';
+import AddImage from '../../Image/add-image';
 import {getUserById} from '../../../../Utilities';
 import FollowButton from '../follow-button';
 import ListImages from '../../Image/list-images';
 import { Link } from 'react-router-dom';
 import Header from '../../Header/';
 
- class UserPage extends React.Component {
-	 checkUserbyIdOnUserPage = (authId, userId) => {
+ const UserPage = (props) => {
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	function checkUserbyIdOnUserPage (authId, userId) {
 				if(authId === userId){
 					return true;
 				}
 	}
-	render() {
-		const { user, auth, userIdPage} = this.props;
+		const { user, auth, userIdPage} = props;
 		return (
 			<div style={{ height: "5vh" }} className="container-imitation valign-wrapper">
 			<Header  /> 
@@ -23,13 +25,15 @@ import Header from '../../Header/';
 				<h1>{user.name}</h1>
 				<div className="profile-options">
 					<div style={{ margin : '1em', fontWeight : 'bold' }}>
-					{this.checkUserbyIdOnUserPage(auth.user._id, userIdPage)  &&
+					{checkUserbyIdOnUserPage(auth.user._id, userIdPage)  &&
 						<>
-							<button className="btn-imt btn-edit-profil"><Link to={`/edit/${this.props.auth.user._id}`}>Edit Your Profil</Link></button>
-							<button className="btn-imt btn-edit-profil"><Link to={`/add/`}> Upload an image </Link></button>
-							
+							<button className="btn-imt btn-edit-profil"><Link to={`/edit/${props.auth.user._id}`}>Edit Your Profil</Link></button>
+							<button onClick={event => setShow(true) } className="btn-imt btn-edit-profil"> Upload an image</button>
+							{ show &&
+								<AddImage show={show} close={handleClose} />
+							}	
 						</>
-						}{!this.checkUserbyIdOnUserPage(auth.user._id, userIdPage)  &&
+						}{!checkUserbyIdOnUserPage(auth.user._id, userIdPage)  &&
 							<FollowButton userId={user._id}  />
 						}
 					</div>
@@ -48,7 +52,6 @@ import Header from '../../Header/';
 			</div>
 		</div>
 		);
-	}
 }
 
 
@@ -73,4 +76,4 @@ const  mapStateToProps = (state, ownProps ) =>  {
 		userIdPage : userId
 	};
 }
-export default connect(	mapStateToProps,null)(UserPage);
+export default connect(mapStateToProps,null)(UserPage);

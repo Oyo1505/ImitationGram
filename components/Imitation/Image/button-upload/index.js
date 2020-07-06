@@ -26,7 +26,7 @@ const Container = styled.div`
 
 
 
-const imageMaxSize = 1000000; //bytes
+const imageMaxSize = 2000000; //bytes
 const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
 const acceptedFileTypesArray = acceptedFileTypes.split(",").map(function(item) {return item.trim()});
 
@@ -94,9 +94,10 @@ export default class DragImage extends React.Component {
 	render() {
 		return (
 			<Fragment>
-				<Modal show={this.props.end} onHide={this.toggle}
+				<Modal 
+							show={this.props.end}
+							 onHide={this.toggle}
 							size="lg"  
-
 							aria-labelledby="contained-modal-title-vcenter"
 						    centered
 							>

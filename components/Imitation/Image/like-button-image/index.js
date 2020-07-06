@@ -22,18 +22,18 @@ const LikeButtonImage =(props) =>{
             return imageCopy; 
         }
     }
-  function  onClickOnLikeButton(){
+  function  onClickOnLikeButton(event){
     event.preventDefault();
     let imageCopy = actionOnLikesArray(props.auth.user._id);
     setImage(imageCopy);
     props.actions.updateImage(image);
     }
-    console.log(props.auth)
+
     return(
             <div>
                 {props.auth.isAuthenticated &&  
                   <>
-                    <div className="item-header-content" onClick={onClickOnLikeButton}>
+                    <div className="item-header-content" style={{padding:"0.5em 0"}} onClick={onClickOnLikeButton}>
                     <i className={image.likes.includes(props.auth.user._id) ? 'icon icon-like-red' : 'icon icon-like'} ></i> <span style={{fontWeight: 'bold'}}>{image.likes.length} like(s)</span> 
                     </div>
                  </>
@@ -51,8 +51,7 @@ const LikeButtonImage =(props) =>{
   
 };
 LikeButtonImage.propTypes = {
-    image : PropTypes.object.isRequired,
-    user : PropTypes.object.isRequired
+    image : PropTypes.object.isRequired
 }
 const getImageById= (images, imageId)=>{
     const image = Object.assign({}, images.find(image => image._id === imageId))
@@ -66,11 +65,12 @@ function mapDispatchToProps(dispatch) {
 }
 const mapStateToProps = (state, ownProps)=> {
     let image = {
-		"_id":"",
+        "_id":"",
 		"url":"",
 		"user_id":"", 
 		"likes":[],
-		"name":"",
+        "name":"",
+        "comments":[],
 	};
 
    let imageId = ownProps.imageId;
