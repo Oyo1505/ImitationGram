@@ -10,13 +10,13 @@ class UserForm extends React.Component {
 				<form>
 					<TextInput 
 						name="name"
-						label="label"
+						label="Name"
 						value={this.props.user.name}
 						onChange={this.props.onChange}
 					/>
 					<TextInput 
 						name="email"
-						label="label"
+						label="Email"
 						value={this.props.user.email}
 						onChange={this.props.onChange}
 					/>

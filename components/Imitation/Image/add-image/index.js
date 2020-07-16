@@ -177,7 +177,6 @@ const mapStateToProps = (state) => {
 	return{
 		auth:state.auth,
 		image,
-
 	}
 }
 

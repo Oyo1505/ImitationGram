@@ -56,18 +56,18 @@ import Header from '../../Header/';
 
 
 const  mapStateToProps = (state, ownProps ) =>  {
-	let user = {    "_id": "",
-					"name": "",
-					"email": "",
-					"followers_id":[],
-					"suscribed_id":[],
-					"images_id": [],
+	let user = {   "_id": "",
+                    "name": "",
+                    "email": "",
+                    "profilPicture":"",
+                    "followers_id":[],
+                    "suscribed_id":[],
+                    "images_id": [],
 				};      
 				
 	let users = state.users;
 	let userId = ownProps.match.params.id;
 	if(userId && users.length > 0){
-
 		user = getUserById(users, userId)
 	}
 	return {

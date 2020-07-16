@@ -11,9 +11,7 @@ const Signin = React.memo((props) =>  {
     const [errors, setErrors] = useState({});
     
     function shouldComponentUpdate(nextProps){
-     
         if (nextProps.auth.isAuthenticated) {
-      
             this.props.history.push("/imitationgram");
         }
         if (nextProps.errors) {

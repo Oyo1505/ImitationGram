@@ -17,25 +17,26 @@ const userSchema = new Schema({
 		type:String,
 		required: true,
 	},
-	date: {
-		type: Date,
-		default: Date.now
-	},
-	images_id: {
-		type: Array,
-		required: false
+   images_id: {
+	type: Array,
+	required: false,
 	},
 	followers_id:{
-		 type:  Array,
-		 required:false 
+		type:  Array,
+		required:false,
 	},
 	suscribed_id:{
 		type:  Array,
-		required:false 
-   }
-	
+		required:false, 
+	},
+	date: {
+		type: Date,
+		default: Date.now,
+	},
+	profilPicture : {
+		type:  String,
+		required:false, 
+   },
 });
-
-
 
 module.exports = User = mongoose.model("user", userSchema);

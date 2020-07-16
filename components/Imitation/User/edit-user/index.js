@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import Header from '../../Header';
-import UserForm from '../UserForm/'
+import UserForm from '../UserForm/';
+import  default_user from '../../../../images/default_user.png';
+import UploadProfilePicture from '../upload-profile-picture';
 import { bindActionCreators } from 'redux';
 import * as userActions from "../../../../actions/";
 import { connect } from 'react-redux';
@@ -36,6 +38,16 @@ class EditUser extends React.Component {
         return (
             <div style={{ height: "5vh" }} className="container valign-wrapper" data-test="editUserComponent">
 				<Header />
+                <div className="picture-profile-thumb" style={{marginRight : "1em"}}>
+                {!this.state.user.profilPicture &&
+                    <img src={default_user} style={{height: "30px"}} alt="image-default-user" />
+                }
+                {this.state.user.profilPicture &&
+                    <img src={this.state.user.profilPicture} style={{height: "30px"}} alt="default-image" />
+                }
+                    
+                </div>
+                    <UploadProfilePicture />
                     <UserForm 
                         user={this.state.user}
                         onChange={this.onChangeValue}
@@ -67,6 +79,7 @@ const mapStateToProps = (state, ownProps) => {
         "_id": "",
         "name": "",
         "email": "",
+        "profilPicture":"",
         "followers_id":[],
         "suscribed_id":[],
         "images_id": [],

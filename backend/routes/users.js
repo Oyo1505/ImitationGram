@@ -31,7 +31,8 @@ router.post("/register", (req, res) => {
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          profilPicture: req.body.profilPicture,
         });
 
         //Hash password before saving in database
@@ -54,7 +55,10 @@ router.put('/:id', (req, res) => {
   User.findById(req.params.id)
         .then(user => {
           user.name = req.body.name;
-          user.email = req.body.email
+          user.email = req.body.email;
+          user.profilPicture = req.body.profilPicture;
+          user.followers_id = req.body.followers_id;
+          user.suscribed_id = req.body.suscribed_id;
           user.save()
                 .then(user => res.json(user))
                 .catch(err => res.status(400).json('Error: ' + err));
@@ -123,37 +127,4 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-/*router.route('/add').post((req, res) => {
-    const name = req.body.name;
-
-    const newUser = new User({ name });
-
-    newUser.save()
-        .then(() => res.json('User added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-router.route('/:id').get((req, res) => {
-    User.findById(req.params.id)
-        .then(exercise => res.json(exercise))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-router.route('/:id').delete((req, res) => {
-    User.findByIdAndDelete(req.params.id)
-        .then(() => res.json('User deleted.'))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-
-router.route('/:id').put((req, res) => {
-    User.findById(req.params.id)
-        .then(user => {
-            user.name = req.body.name;
-            user.save()
-                .then(() => res.json('User updated!'))
-                .catch(err => res.status(400).json('Error: ' + err));
-        })
-        .catch(err => res.status(400).json('Error: ' + err));
-});*/
 module.exports = router;

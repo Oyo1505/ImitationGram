@@ -20,6 +20,7 @@ const mapStateToProps = (state, ownProps) => {
     let user = {    "_id": "",
                     "name": "",
                     "email": "",
+                    "profilPicture":"",
                     "followers_id":[],
                     "suscribed_id":[],
                     "images_id": [],

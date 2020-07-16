@@ -40,6 +40,7 @@ const mapStateToProps = (state) => {
 		"_id": "",
 		"name": "",
 		"email": "",
+		"profilePicture": "",
 		"followers_id":[],
 		"suscribed_id":[],
 		"images_id": [],

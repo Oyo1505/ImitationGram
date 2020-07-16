@@ -22,9 +22,12 @@ const imageSchema = new Schema({
 	},
 	likes:{
 		type: Array,
-		required:false,
-	}
-
+		required:true,
+	},
+	comments:{
+		type: Array,
+		required:true,
+	},
 });
 
 module.exports = Image = mongoose.model('image', imageSchema)

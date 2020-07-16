@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,15 +7,11 @@ import { logoutUser } from "../../../actions/";
 
 const StyledHeader = styled.header`
 	.nav-bar-header{
-		border-bottom: solid 1px  #a0a0a0;
 		display: grid;
-	    grid-template-columns: auto 1fr;
-	    justify-content: space-between;
-	    align-items: stretch;
-	   	@media (max-width: 1300px) {
-	      grid-template-columns: 1fr;
-	      justify-content: center;
-	    }
+   		grid-template-columns: 25% 25% 25% 25%;
+		place-items: center;
+		grid-template-rows: 50px;
+		box-shadow:0px 2px 2px #e2e2e2;
 	}
 `;
 
@@ -34,16 +30,19 @@ render() {
 		return (
 			<StyledHeader>
 				<div className="nav-bar-header">
-					<Link to="/imitationgram">Accueil</Link>
-					<Link to="/explore"><span className="icon icon-compass"></span></Link>
+					<Link className="nav-header-item" to="/imitationgram">Accueil</Link>
+					<Link className="nav-header-item" to="/explore"><span className="icon icon-compass"></span></Link>
 					{isAuthenticated &&
-						<Fragment>
-							<Link to={`/user/${this.props.auth.user._id}`}>Dashboard</Link>
-							<button onClick={this.logout}>Logout</button>
-						</Fragment>	
+						<>
+							<Link className="nav-header-item" to={`/user/${this.props.auth.user._id}`}>Dashboard</Link>
+							<button className="nav-header-item" onClick={this.logout}>Logout</button>
+						</>	
 					}
 					{!isAuthenticated &&
-						<Link to="/signin">Signin</Link>
+						<>
+						<Link className="nav-header-item" to="/signin">Signin</Link>
+						<Link className="nav-header-item" to="/signup">Signup</Link>
+						</>
 					}
 				</div>
 			</StyledHeader>

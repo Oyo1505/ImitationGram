@@ -35,6 +35,9 @@ const mapStateToProps = (state, ownProps) => {
         "_id": "",
         "name": "",
         "email": "",
+        "profilPicture":"",
+        "followers_id":[],
+        "suscribed_id":[],
         "images_id": [],
     };
    

@@ -57,6 +57,7 @@ const mapStateToProps = (state, ownProps) => {
     let user = {    "_id": "",
                     "name": "",
                     "email": "",
+                    "profilPicture":"",
                     "followers_id":[],
                     "suscribed_id":[],
                     "images_id": [],
@@ -68,12 +69,9 @@ const mapStateToProps = (state, ownProps) => {
     if(userId && state.users.length > 0){
          user = getUserById(users, userId);
     }            
- 
     return {
         userIdFromUserPage,
         user
     };
 }
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(FollowButton)
