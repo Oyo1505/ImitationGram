@@ -124,7 +124,7 @@ class EditImagePage extends React.Component {
             <Fragment>
             <div style={{ height: "5vh" }} className="container valign-wrapper" data-test="editImageComponent">
 				<Header />
-                <div>
+                <div style={{margin :"0 auto", textAlign: "center"}}>
                 <Image 
                 ref={this.ref}
                 cloudName="dtjpoyvv5"
@@ -157,7 +157,7 @@ class EditImagePage extends React.Component {
 
                 </Image>
                 </div>
-                
+                <div style={{margin :"0 auto", textAlign: "center"}}>
                 <SelectInput label="Color Effect" name="colorEffect"  values={colorEffects} title="colorEffect" onChange={this.handleColorEffect} />   
                 {this.state.colorEffects.colorEffect && 
                      <Spring
@@ -218,6 +218,7 @@ class EditImagePage extends React.Component {
 				className="btn btn-primary btn-edit-image"
 				onClick={this.onSubmit}
 				/>
+                </div>
                
             </div>
             </Fragment>

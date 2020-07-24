@@ -19,7 +19,7 @@ const ImageItemTimeline = (item) => {
 		
 		<animated.div 
 				style={{
-					width: '450px', 
+					width: '100%', 
 					height:'auto', 
 					borderRadius:'11px',
 					backgroundColor: '#f7f6f4',

@@ -96,8 +96,20 @@
     border: 1px solid;
 }
 .btn-follow{
+    border-radius:3px;
+    font-size:15px;
+    font-weight:bold;
+    color:#ffff;
 	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-	background-color:#2dabf9;
+	
+}
+.btn-followed{
+    border-radius:3px;
+    font-size:15px;
+    font-weight:bold;
+    color :#515167;
+    border : 1px solid #515167;
+    background-color:#ffff;
 }
 
 .btn-overlay-image{

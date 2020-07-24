@@ -8,13 +8,13 @@ const ListImagesTimeline =({images}) =>  {
 	const sortedImagesByDate = sortedElementsByDateDesc(images);
 
 	return (
-	<ul className="list-images-user">
+	<div className="discover-list-images">
 		{ sortedImagesByDate && sortedImagesByDate.length ? 
 		 sortedImagesByDate.map(image => {
 			return <ImageItem image={image} key={image._id} />;
 		})
 		: "You must suscribe to someone ! "}
-	</ul>
+	</div>
 	)
 	
 };

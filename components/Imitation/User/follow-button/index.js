@@ -1,17 +1,13 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
-import {getUserById} from '../../../../Utilities';
+import {getUserById, copyTheCurrentObject } from '../../../../Utilities';
 import * as userActions from "../../../../actions/";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+
 const FollowButton = (props) => {
    const [user, setUser] = useState(props.user);
- 
-   function copyTheCurrentObject (object) {
-        let cloneObject = Object.assign({},object);
-        return cloneObject;
-    }
 
     function actionOnSuscribedArray (id){
         let userCopy = copyTheCurrentObject(user);

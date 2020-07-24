@@ -11,6 +11,7 @@ const UploadProfilePicture =(props)=> {
 	const [isLoading, setLoadin] = useState(false);
 	const fileInput = useRef(null);
 	
+	
    function handleOnDrop (rejectedFiles ){	
 	
 		if( rejectedFiles && rejectedFiles.length > 0){
@@ -33,15 +34,16 @@ const UploadProfilePicture =(props)=> {
 				body:data,
 			});	
 			const file = await res.json();
-			let copyUser = copyTheCurrentObject(user)
+			const copyUser = copyTheCurrentObject(user)
 			copyUser.profilPicture = file.secure_url;
-			setUser(copyUser)
-			props.actions.editUser(user);
+			console.log(copyUser, user)
+			props.actions.editUser(copyUser);
+			setUser(copyUser);
         }
 	}
         return (
             <div>
-                <input type="file" ref={fileInput} name="avatar"  />
+                <input type="file" ref={fileInput} name="avatar"  style={{marginBottom : "25px"}}/>
                 <input type="button" onClick={handleOnDrop} value="Upload"/> 
             </div>
         ) 

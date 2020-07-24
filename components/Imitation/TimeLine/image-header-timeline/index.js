@@ -1,6 +1,5 @@
-import React, { Fragment, useState, set } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import  default_user from '../../../../images/default_user.png';
 import  {connect } from 'react-redux';
 
 class ImageHeaderTimeline extends React.Component {
@@ -15,7 +14,7 @@ class ImageHeaderTimeline extends React.Component {
         return (
         <header className="header-image-timeline">
             <div className="picture-profile-thumb">
-                <img src={default_user} alt="image-default-user" />
+                <img src={this.state.user.profilPicture} alt="image-default-user" />
             </div>
             <div className="username-thumb-image-timeline">
                 <Link to={`/user/${this.state.user._id}`}>{this.state.user.name}</Link>

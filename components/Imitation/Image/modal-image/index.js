@@ -9,7 +9,6 @@ import { Modal } from 'react-bootstrap';
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom"
 import { deleteImage } from "../../../../actions/";
-import  default_user from '../../../../images/default_user.png';
 
 const ModalImage = (props) => {
     const  [toggle, setToggle] = useState(false);
@@ -32,8 +31,7 @@ const ModalImage = (props) => {
   }
     const user = props.user;
     return (
-        <>
-        
+        <> 
           <Modal 
           animation={false}
            size="xl"
@@ -46,7 +44,7 @@ const ModalImage = (props) => {
               <Modal.Title> 
               <header style={{width:"100%", display:"flex", flexDirection :"row", justifyContent :"left", alignItems: "center" }}>
               <div className="picture-profile-thumb" style={{marginRight : "1em"}}>
-                <img src={default_user} style={{height: "30px"}} alt="image-default-user" />
+                <img src={user.profilPicture} style={{height: "30px"}} alt="image-default-user" />
               </div>
               <div className="username-thumb-image-timeline">
                 <Link to={`/user/${user._id}`}>{user.name}</Link>

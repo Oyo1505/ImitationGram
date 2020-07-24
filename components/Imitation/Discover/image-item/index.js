@@ -8,7 +8,7 @@ const ImageItem = (props) => {
 	const handleClose = () => setShow(false);
 
    return ( 
-         <li key={props.image._id}>
+         <div key={props.image._id} style={{margin: "0 auto"}}>
 			 <div
 			     className="thumbnail-image"
 				 onClick={() => setShow(true)}
@@ -19,7 +19,7 @@ const ImageItem = (props) => {
 		    />				
 			</div>
 			<ModalImage show={show} close={handleClose} image={props.image} />
-		</li>	
+		</div>	
     );
 }
 

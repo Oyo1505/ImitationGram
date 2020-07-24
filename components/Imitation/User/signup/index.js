@@ -50,7 +50,7 @@ class Signup extends React.Component {
 
         const { errors } = this.state;
         return (
-            <div className="container valign-wrapper">
+            <div className="container-imitation valign-wrapper">
             <Header /> 
 				<form className='form-signin' noValidate onSubmit={this.onSubmit}>
 					<div>

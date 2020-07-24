@@ -36,18 +36,21 @@ class EditUser extends React.Component {
     }
     render() {
         return (
-            <div style={{ height: "5vh" }} className="container valign-wrapper" data-test="editUserComponent">
+            <div id="imitation-app">
+            <div style={{ height: "5vh" }} className="container-imitation valign-wrapper" data-test="editUserComponent">
 				<Header />
+                <div className="edit-user-page" >
                 <div className="picture-profile-thumb" style={{marginRight : "1em"}}>
+                <h3>Profil Picture</h3>
                 {!this.state.user.profilPicture &&
-                    <img src={default_user} style={{height: "30px"}} alt="image-default-user" />
+                    <img src={default_user} style={{height: "15vh"}} alt="image-default-user" />
                 }
                 {this.state.user.profilPicture &&
-                    <img src={this.state.user.profilPicture} style={{height: "30px"}} alt="default-image" />
+                    <img src={this.state.user.profilPicture} style={{height: "15vh"}} alt="default-image" />
                 }
-                    
-                </div>
                     <UploadProfilePicture />
+                </div>
+                    <br/>
                     <UserForm 
                         user={this.state.user}
                         onChange={this.onChangeValue}
@@ -55,6 +58,8 @@ class EditUser extends React.Component {
                     />
                     <button onClick={this.deleteUser}> Delete </button>
 			</div>
+            </div>
+            </div>
         );
     }
 }
