@@ -7,7 +7,7 @@ const CommentItem = (props) => {
 
     function deleteComment(event){
         //TODO delete comment
-        console.log("im in")
+    
     }
     return (
         <div>

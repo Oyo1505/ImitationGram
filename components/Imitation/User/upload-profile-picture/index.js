@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import * as userActions from "../../../../actions/";
 import { verifyFile, checkExtensionFile, getUserById, copyTheCurrentObject } from '../../../../Utilities';
-
+import { propTypes } from 'react-scroll-horizontal';
 
 const UploadProfilePicture =(props)=> {
 	const [user, setUser] = useState(props.user)
@@ -36,8 +36,8 @@ const UploadProfilePicture =(props)=> {
 			const file = await res.json();
 			const copyUser = copyTheCurrentObject(user)
 			copyUser.profilPicture = file.secure_url;
-			console.log(copyUser, user)
 			props.actions.editUser(copyUser);
+			//won't set user correctly in setUser
 			setUser(copyUser);
         }
 	}
@@ -48,6 +48,13 @@ const UploadProfilePicture =(props)=> {
             </div>
         ) 
 }
+
+UploadProfilePicture.propTypes = {
+	user : PropTypes.object.isRequired,
+	isLoading : PropTypes.bool
+
+}
+
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(userActions, dispatch)
