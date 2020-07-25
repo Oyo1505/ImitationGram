@@ -24,7 +24,7 @@ import Header from '../../Header/';
 			  <header className="header-profile-imitation">
 				<h1>{user.name}</h1>
 				<div className="profile-options">
-					<div style={{ margin : '1em', fontWeight : 'bold' }}>
+					<div>
 					{checkUserbyIdOnUserPage(auth.user._id, userIdPage)  &&
 						<>
 							<button className="btn-imt btn-edit-profil"><Link to={`/edit/${props.auth.user._id}`}>Edit Your Profil</Link></button>
