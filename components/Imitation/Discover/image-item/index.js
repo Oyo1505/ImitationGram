@@ -10,7 +10,7 @@ const ImageItem = (props) => {
    return ( 
          <div key={props.image._id} style={{margin: "0 auto"}}>
 			 <div
-			     className="thumbnail-image"
+			     className="thumbnail-image-discover"
 				 onClick={() => setShow(true)}
 			 >
 			<img 

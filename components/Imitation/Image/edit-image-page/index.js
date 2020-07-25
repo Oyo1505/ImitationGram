@@ -129,7 +129,7 @@ class EditImagePage extends React.Component {
                 ref={this.ref}
                 cloudName="dtjpoyvv5"
                 publicId={`imitationGram/${this.state.image.name}`}
-                
+                width="100%"
                 >
                    <Transformation width="500" quality="100" />
                    {this.state.text.content &&

@@ -7,11 +7,10 @@ export default function imagesReducers(state = initialState.images, action) {
 
 	switch(action.type){
 		case types.LOAD_IMAGES_SUCCESS:
-			console.log(action.payload)
 			return action.payload
 		case types.ADD_IMAGE_SUCCESS:
 			 return [
-        ...state.filter(image => image.id !== action.payload._id),
+        ...state.filter(image => image._id !== action.payload._id),
        	 Object.assign({}, action.payload)
 		 ] 
 		case types.UPDATE_IMAGE_SUCCESS:
