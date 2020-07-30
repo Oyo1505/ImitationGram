@@ -7,7 +7,7 @@ class UserForm extends React.Component {
     render() {
         return (
             <div>
-				<form>
+				<form className="form-imitation">
 					<TextInput 
 						name="name"
 						label="Name"
@@ -23,7 +23,7 @@ class UserForm extends React.Component {
 					<input 
 						type="submit"
 						disabled={this.props.saving}
-						className="btn btn-primary"
+						
 						onClick={this.props.onSave}
 					/>
 	

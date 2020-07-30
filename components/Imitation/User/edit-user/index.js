@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import {Link} from 'react-router-dom';
 import Header from '../../Header';
 import UserForm from '../UserForm/';
 import  default_user from '../../../../images/default_user.png';
@@ -40,7 +41,7 @@ class EditUser extends React.Component {
             <div style={{ height: "5vh" }} className="container-imitation valign-wrapper" data-test="editUserComponent">
 				<Header />
                 <div className="edit-user-page" >
-                <div className="picture-profile-thumb" style={{marginRight : "1em"}}>
+                <div className="picture-profile-thumb">
                 <h3>Profil Picture</h3>
                 {!this.state.user.profilPicture &&
                     <img src={default_user} style={{height: "15vh"}} alt="image-default-user" />
@@ -50,13 +51,18 @@ class EditUser extends React.Component {
                 }
                     <UploadProfilePicture />
                 </div>
-                    <br/>
-                    <UserForm 
+                <div style={{border : "2px solid black", padding:"20px", fontWeight: "bold", margin: "0 auto", width:"50%" }} >
+                    <Link to={`/reset-password`}>Change password</Link>
+                </div>
+                 
+                <br/>
+                <UserForm 
+                       style={{marginTop: "50vh" }}
                         user={this.state.user}
                         onChange={this.onChangeValue}
                         onSave={this.onSubmit}
-                    />
-                    <button onClick={this.deleteUser}> Delete </button>
+                />
+               <button onClick={this.deleteUser}>Delete your account ?</button>
 			</div>
             </div>
             </div>

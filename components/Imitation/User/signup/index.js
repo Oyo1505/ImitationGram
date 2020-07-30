@@ -52,7 +52,7 @@ class Signup extends React.Component {
         return (
             <div className="container-imitation valign-wrapper">
             <Header /> 
-				<form className='form-signin' noValidate onSubmit={this.onSubmit}>
+				<form className='form-imitation' style={{marginTop: "50vh", transform: "translateY(-50%)" }} noValidate onSubmit={this.onSubmit}>
 					<div>
 					<label>
 						Pseudo
@@ -61,6 +61,7 @@ class Signup extends React.Component {
 					<input onChange={this.onChange} 
 					type="text"  
 					name="name" 
+					max="15"
 					value={this.state.name}
 					className={classnames("", {
 						invalid: errors.name
@@ -91,6 +92,7 @@ class Signup extends React.Component {
 					<input onChange={this.onChange} 
 					type="password"
 					name="password"
+					min="6"
 					value={this.state.password} 
 					className={classnames("input-text-user-imiatation", {
 						invalid: errors.password
@@ -106,6 +108,7 @@ class Signup extends React.Component {
 					<input onChange={this.onChange} 
 					type="password"  
 					name="password2" 
+					min="6"
 					value={this.state.password2} 
 					className={classnames("input-text-user-imiatation", {
 						invalid: errors.password2

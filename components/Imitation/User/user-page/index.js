@@ -22,6 +22,11 @@ import Header from '../../Header/';
 			<div className="row">
 			  <div className="col s12 center-align">  
 			  <header className="header-profile-imitation">
+				{user.profilPicture &&
+				<div className="picture-profile-user-page">
+               	 	<img src={user.profilPicture} alt="image-default-user" />
+           		</div>
+				}
 				<h1>{user.name}</h1>
 				<div className="profile-options">
 					<div>
@@ -37,6 +42,7 @@ import Header from '../../Header/';
 							<FollowButton userId={user._id}  />
 						}
 					</div>
+					<div className="count-subs-follow">
 					<div style={{ margin : '1em', fontWeight : 'bold' }}>
 						<p  style={{ marginTop : 0, marginBottom : 0,fontWeight : 'bold' }}>Followers</p>
 						<p  style={{ marginTop : 0, marginBottom : 0,fontWeight : 'bold' }}>{user.followers_id.length}</p>
@@ -45,6 +51,7 @@ import Header from '../../Header/';
 						<p style={{ marginTop : 0, marginBottom : 0,fontWeight : 'bold' }} >Suscribed</p>
 						<p style={{ marginTop : 0, marginBottom : 0,fontWeight : 'bold' }}>{user.suscribed_id.length}</p>
 					</div>	
+					</div>
 				</div>
 			  </header>
 	            	<ListImages userId={userIdPage}/>

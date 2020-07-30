@@ -40,7 +40,7 @@ const Signin = React.memo((props) =>  {
         return (
             <div  className="container">
                
-				<form className='form-signin' noValidate onSubmit={onSubmit}>
+				<form className='form-imitation' style={{marginTop: "50vh", transform: "translateY(-50%)" }} noValidate onSubmit={onSubmit}>
                     <div>
                     <label>
                         Email 
