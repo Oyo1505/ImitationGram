@@ -53,7 +53,7 @@ const ImageItemTimeline = (item) => {
 					</div>
 					<footer className="modal-footer"  >
 				    <LikeButtonImage imageId={item.image._id} />
-					<div class="comment-section">
+					<div className="comment-section">
 						<CommentsImage comments={item.image.comments} />
 					</div>
 					</footer>

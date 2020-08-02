@@ -23,11 +23,10 @@ const ModalImage = (props) => {
       }
     }
     function toggleMenu(){
-
       setToggle(!toggle);
     }
-  async function onClickDeleteImage(imageId){
-   await props.deleteImage(imageId);
+  async function onClickDeleteImage(image){
+   await props.deleteImage(image);
   }
     const user = props.user;
     return (
@@ -56,7 +55,7 @@ const ModalImage = (props) => {
               {checkCurrentUserbyId(props.match.params.id, props.auth.user._id) &&
 						<>
                 <li><Link to={`/edit-image/${props.image.name}`}> Edit </Link></li>
-						  	<li onClick={() => onClickDeleteImage(props.image._id)}> Delete </li>
+						  	<li onClick={() => onClickDeleteImage(props.image)}> Delete </li>
                 </>
 						}
             <li> Share </li>
@@ -75,7 +74,7 @@ const ModalImage = (props) => {
             <Modal.Footer>
               
               <LikeButton imageId={props.image._id} />
-              <div class="comment-section">
+              <div className="comment-section">
                 <CommentsImage comments={props.image.comments} />  
               </div>
               <AddComment image={props.image}/>

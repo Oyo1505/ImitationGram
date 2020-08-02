@@ -8,6 +8,7 @@ import UploadProfilePicture from '../upload-profile-picture';
 import { bindActionCreators } from 'redux';
 import * as userActions from "../../../../actions/";
 import { connect } from 'react-redux';
+import { copyTheCurrentObject } from '../../../../Utilities';
 
 class EditUser extends React.Component {
 
@@ -16,6 +17,14 @@ class EditUser extends React.Component {
         this.state = {
             user: this.props.user,
         }
+    }
+  deleteAllimagesUser  =  async (id) =>{
+        let images = this.props.images;
+        await Promise.all(images.map(image => {  
+            if(image.user_id === id){
+             this.props.actions.deleteImage(image);
+            };
+        }));
     }
     onChangeValue = (event) => {
         event.preventDefault();
@@ -27,6 +36,7 @@ class EditUser extends React.Component {
     deleteUser = (event) => {
         event.preventDefault();
         this.props.actions.deleteUser(this.state.user);
+        this.deleteAllimagesUser(this.state.user._id);
         this.props.actions.logoutUser();
         this.props.history.push("/imitationgram");
     }
@@ -102,7 +112,8 @@ const mapStateToProps = (state, ownProps) => {
     }
     return {
         user: user,
-        users: state.users
+        users: state.users,
+        images: state.images
     };
 }
 

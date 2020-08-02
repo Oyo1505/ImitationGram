@@ -4,19 +4,16 @@ import setAuthToken from "../Utilities/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { customHistory } from '../index';
 
-const DOMAIN = process.env.DOMAIN
-
 /*USER */
 
 // LOAD users 
 
 export const loadUser = (userId) => {
-    axios.get(`https://evening-tor-18506.herokuapp.com/users/${userId}`)
+    axios.get(`https://evening-tor-18506.herokuapp.com/${userId}`)
         .then(response => {
             return response;
         })
         .catch(err =>{throw(err)});
-
 };
 
 export const loadUsersSuccess = users => {
@@ -33,12 +30,11 @@ export const loadAllUsers = () => dispatch => {
 
 }
 // Register User
-export const registerUser = (userData, history) => dispatch => {
+export const registerUser = (userData, history)  => {
     axios
         .post(`https://evening-tor-18506.herokuapp.com/users/register`, userData)
         .then(res => history.push("/signin")) // re-direct to login on successful register
          .catch(err =>{throw(err)});
-
 };
 // Login - get user token
 export const loginUser = userData => dispatch => {
@@ -137,11 +133,9 @@ export const loadAllImages = () => dispatch => {
 
 
 export const addImage = imageData => dispatch => {
-
   axios.post(`https://evening-tor-18506.herokuapp.com/images/add-image`, imageData)
   .then( res => { 
     dispatch(addImageSuccess(imageData));
-      
     customHistory.push(`/edit-image/${imageData.name}`);
   })
   .catch( err =>{ throw(err)});
@@ -156,7 +150,7 @@ export const addImageSuccess = imageData => {
 
 export const deleteImage = imageData => dispatch => {
  
-  axios.delete(`https://evening-tor-18506.herokuapp.com/images/${imageData}`, imageData)
+  axios.delete(`https://evening-tor-18506.herokuapp.com/images/${imageData._id}`, imageData)
   .then( res => { 
     dispatch(deleteImageSuccess(imageData));
   })
@@ -173,6 +167,7 @@ export const deleteImageSuccess = imageData => {
 export const updateImage = imageData => dispatch => {
   axios.put(`https://evening-tor-18506.herokuapp.com/images/${imageData.name}`, imageData)
   .then( res => { 
+   
     dispatch(updateImageSuccess(imageData));
   })
   .catch( err =>{ throw(err)});
@@ -185,56 +180,3 @@ export const updateImageSuccess = imageData => {
     payload: imageData
   }
 }
-/*USER*/
-/*
-export function createUser(user){
-  
-  return  (dispatch) =>   {
-    return userApi.createUser(user).then(responseUser => {
-      dispatch(createUserSuccess(responseUser));
-      return responseUser;
-    }).catch(error =>{ throw(error)});
-  }
-}
-
-export function deleteUser(user){
-
-  return function (dispatch){
-  return userApi.deleteUser(user).then( () => {
-      dispatch(deleteUserSuccess(user))
-    }).catch(error =>{ throw(error)});
-  }
-}
-export function loadUsers() {
-    return function (dispatch) {
-      return userApi.getAllUsers().then(user => {
-              dispatch(loadUsersSuccess(user));
-             })
-             .catch(error=> {
-                throw(error);
-             });
-    };
-};
-
-export function loginUser(user) {
-    return function (dispatch) {
-      return userApi.loginUser().then(responseUser => {
-              dispatch(loadUserSuccess(responseUser));
-             })
-             .catch(error=> {
-                throw(error);
-             });
-    };
-};
-
-export function updateUser(user) {
-  return  (dispatch) => {
-    return userApi.updateUser(user).then(responseUser => {
-      dispatch(updateUserSuccess(responseUser));
-    }).catch(error => {
-      throw(error);
-    });
-  };
-}
-
-*/
